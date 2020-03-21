@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>RECIPY</title>
+  <!-- 외부 css, js 링크 -->
+  <link rel="stylesheet" type="text/css" href="css/maincss.css">
+  <script src="js/main.js"></script>
+
+  <!-- 글자 링크 -->
+  <link href="https://fonts.googleapis.com/css?family=Jua&display=swap&subset=korean" rel="stylesheet">
+  <!--한글+영어(굵고 동글동글한 체) : font-family: 'Jua', sans-serif; -->
+  <link href="https://fonts.googleapis.com/css?family=Do+Hyeon&display=swap&subset=korean" rel="stylesheet">
+  <!-- 한글+영어(단정 꽉차있는체) : font-family: 'Do Hyeon', sans-serif; -->
+  <link href="https://fonts.googleapis.com/css?family=Sunflower:300&display=swap&subset=korean" rel="stylesheet">
+  <!-- 한글+영어(얇고 단정한체) font-family: 'Sunflower', sans-serif; -->
+
+  <!-- 햄버거 모양 가져오기 -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.0-1/css/all.min.css" />  
+  <!-- 슬라이드 j쿼리-->
+  <link href="jquery.bxslider/jquery.bxslider.css" rel="stylesheet" /> 
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script> 
+  <script src="jquery.bxslider/jquery.bxslider.js"></script>
+  <script type="text/javascript"> 
+  //<![CDATA[ 
+    $(document).ready(function(){ 
+    $('.bxslider').bxSlider(); }); 
+  //]]> 
+  
+  $(document).ready(function(){ 
+    $('.bxslider').bxSlider({ 
+      auto: true, speed: 500, pause: 4000, mode:'fade', autoControls: true, pager:true, }); });
+
+  
+  </script>
+
+
+  
+
+
+
+</head>
+
+<body>
+  <header class="header_container">
+    <!-- ----------------------브라우저용 헤더---------------------- -->
+    <nav class="header_wrapper">
+      <div class="header_logo"><a href="main.html"><img src="img/goldbanner.jpg" alt=""></a></div>
+      <ul class="menu_list">
+        <li class="menu list1"><a href="#">BRAND</a>
+          <ul class="submenu sublist1">
+            <li><a href="#">소개글</a></li>
+          </ul>
+        </li>
+        <li class="menu list2"><a href="#">MENU</a>
+          <ul class="submenu sublist2">
+            <li><a href="#">STEAK</a></li>
+            <li><a href="#">PASTA</a></li>
+            <li class="smallFont"><a href="#">SALAD&OTHERS</a></li>
+            <li><a href="#">DRINK</a></li>
+            <li><a href="#">DESSERT</a></li>
+          </ul>
+        </li>
+        <li class="menu list3"><a href="#">COMMUNITY</a>\
+          <ul class="submenu sublist3">
+            <li><a href="#">공지사항</a></li>
+          </ul>
+        </li>
+        <li class="menu list4"><a href="#">EVENT</a>
+        </li>
+        <div class="menu_forms">
+          <li class="menu list5"><a href="login.html">로그인</a></li>
+          <li class="menu list6"><a href="member.html">회원가입</a></li>
+          <li class="menu list7"><a href="#">예약하기</a></li>
+        </div>
+      </ul>
+    </nav>
+      <!-- -------------------모바일 햄버거 헤더---------------------- -->
+    <nav id="mobile">
+      <ul>
+        <li><a href="#">BRAND</a>
+          <ul class="submenu sublist1">
+            <li><a href="#">소개글</a></li>
+          </ul>
+        </li>
+        <li><a href="#">MENU</a>
+          <ul class="submenu sublist2">
+            <li><a href="#">STEAK</a></li>
+            <li><a href="#">PASTA</a></li>
+            <li class="smallFont"><a href="#">SALAD&OTHERS</a></li>
+            <li><a href="#">DRINK</a></li>
+            <li><a href="#">DESSERT</a></li>
+          </ul>
+        </li>
+        <li><a href="#">COMMUNITY</a>
+          <ul class="submenu sublist3">
+            <li><a href="#">공지사항</a></li>
+          </ul>
+        </li>
+        <li><a href="#">EVENT</a> </li>
+        <li><a href="login.html">로그인</a> </li>
+        <li><a href="member.html">회원가입</a> </li>
+        <li><a href="#">예약하기</a> </li>
+
+      </ul>
+    </nav>
+    <a href="#" class="tab">
+      <span style="color: white;">
+        <i class="fas fa-bars fa-3x"></i>
+      </span>
+    </a>
+  </header> 
+<!-- ---------------------- 1단 신메뉴 이미지---------------------- -->
+  <section>
+    <div class="newImg_container">
+      <div class="new_img"  val="1" mx="3">
+        <ul class="bxslider"> 
+          <li><img src="img/mainmenu1.jpg" /></li>
+          <li><img src="img/mainmenu2.jpg" /></li> 
+          <li><img src="img/mainmenu3.jpg" /></li> 
+          <li><img src="img/mainmenu4.jpg" /></li> 
+          <li><img src="img/mainmenu5.jpg" /></li> 
+        </ul>
+        
+      </div>
+    </div>
+  </section>
+  <!-- ---------------------- 2단 박스 ---------------------- -->
+  <section class="note_container">
+    <div class="note_wrapper1">
+      <span class="note_box note_notice">
+        <div class="note_title">
+          N O T I C E
+        </div>
+        <!-- 이미지로 넣는다면 여기 -->
+        <!-- <img src="img/notice.jpg" width="100%" height="85%" alt="공지사항"> -->
+        <div class="note_notice">
+          <ul>
+            <li><a href="#">[공지] SNS이벤트 당…</a><span>19.11.11</span></li>
+            <li><a href="#">[공지] 영업시간 변경…</a><span>19.03.15</span></li>
+            <li><a href="#">크리스마스 예약 안내</a><span>19.12.10</span></li>
+            <li><a href="#">SNS이벤트 당첨자발…</a><span>19.11.11</span></li>
+            <li><a href="#">가을 신메뉴 3종을 먼…</a><span>19.09.25</span></li>
+            <li><a href="#">풍선한 한가위 보내…</a><span>19.09.11</span></li>
+            <li><a href="#">추석 명절 영업 안내</a><span>19.09.01</span></li>
+          </ul>
+        </div>
+      </span>
+      <span class="note_box note_event">
+        <div class="note_title">
+          E V E N T
+        </div>
+        <img src="img/event.jpg" width="100%" height="85%" alt="메인 이벤트">
+      </span>
+      <span class="note_box note_service">
+        <div class="note_title">
+          S T O R E
+        </div>
+        <img src="img/call2.jpg" width="100%" height="85%" alt="메인 이벤트">
+      </span>
+    </div>
+  </section>
+
+  <!-- ---------------------- 3단 박스 ---------------------- -->
+  <!-- <section class="note_container2">
+    <div class="note_wrapper2">
+      <div class="note_box2">
+        <div class="note_title">
+          후 기
+        </div>
+        후기를 넣고싶다... 넣을 수 있으면 좋겠다... 그러나 능력이 없다....
+      </div>
+    </div>
+  </section> -->
+  
+<!-- ---------------------- 푸터 ---------------------- -->
+  
+  <footer class="footer_container">
+    <div class="footer_wrapper">
+      <div class="footer_logo"><a href="main.html"><img src="img/goldbanner.jpg" alt="로고"></a></div>
+      <div class="footer_menu">
+        <ul class="footer_menu1">
+          <li><a href="#">소개글</a></li>
+          <li><a href="#">이용약관</a></li>
+          <li><a href="#">개인정보처리방침</a></li>
+          <li><a href="#">사이트맵</a></li>
+        </ul>
+        <div class="footer_menu2">
+          <p class="recipy_"><span>상호 : 레시피 &vert; 주소 : 울산광역시 중구 삼산동 71번길</span></p>
+          <p class="address_"><span>대표 : 강나래 &vert; 사업자등록번호 : 254-47-14495 &vert;</span></p>
+          <p class="master_"></p>
+        </div>
+      </div>
+  </footer>
+</body>
+
+</html>

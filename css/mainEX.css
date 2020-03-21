@@ -1,0 +1,430 @@
+@charset "utf-8";
+
+html, body {
+  margin: 0; 
+  padding: 0;
+  height: 100%;
+  background-color: ivory;
+  background-color: rgba(236, 234, 234, 0.6);
+  background-color: ivory;
+
+}
+/* -------------------------------------- 헤더  */
+.header_container {
+  width: 100%;
+  height: 100px;
+  background-color: black;
+  position: absolute;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+.header_wrapper {
+  width: 1024px;
+  height: 130px;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.header_logo {
+  display: inline-block;
+  flex-grow: 0;
+  flex-shrink: 1; 
+  flex-basis: 100px;
+} 
+/* -------------------------------------- 헤더 메뉴*/
+nav  ul, nav  ul  ul { padding: 0; }
+.menu_list {
+  position: relative;
+  width: 1000px;
+  display: inline-block;
+  list-style: none;   /*앞에 마크 없애기*/
+  font-size: 20px;
+  justify-content: center;
+  align-items: center;
+  font-family: 'Jua', sans-serif;
+  /* font-weight: bold; */
+}
+.list4 {
+  padding: 0;
+}
+ul li {
+  display: inline-block;
+  padding-left: 0.5em;
+  padding-right: 4em;
+}
+ul li a {
+  color: white;
+  text-decoration: none;
+}
+.menu_forms{
+  float: right;
+  padding-right: 2em;
+}
+.menu.list5, .menu.list6, .menu.list7 {
+  font-family: 'Sunflower', sans-serif;
+  font-size: 0.7em;
+  font-weight: normal;
+  padding: 0;
+  padding-right: 3px;
+}
+/* -------------------------------------- 서브메뉴 */
+nav > ul > li:hover > a,   
+nav > ul > li:active > a{   
+  color: goldenrod;
+}
+.submenu {
+  position: absolute;
+  font-size: 0.7em;
+}
+nav ul ul {
+  display:none; 
+  /* box-shadow: 2px 2px 2px 2px rgba(0,0,0,.3); */
+  min-width: 160px;
+  z-index: 1;
+}
+nav ul ul li {
+  display: block;
+  padding: 0;
+}
+nav ul ul a {
+  display: block;
+  width: 120px;
+  padding: 2px 0px 2px 10px;
+  line-height: 30px;
+  font-weight: 400;   /* 기본 굵기 */
+  opacity: 0.6;
+  background-color: #fff;
+  color: rgba(0, 0, 0, 0.6);
+  font-weight: bold;
+  transition: all .3s;
+}
+nav ul ul a:hover,  /* 마우스 위로가져갔을때 */
+nav ul ul a:focus{ /* tab키 눌렀을때 */
+  background-color: #f4f4f4;
+  opacity: 1;
+}
+nav > ul > li:hover ul{
+  display:block;
+  z-index: 1;
+}
+.smallFont {
+  /* salad&others 폰트 */
+  font-size: 0.5;
+}
+/* -------------------------------------- 신메뉴(본문 1단) */
+/*.newImg_container {
+  display: flex;
+  justify-content: center;
+  position: relative;
+  top: 100px;
+}
+.new_img {
+  width : 1024px;
+  height: 25%;
+  background-color: white;
+  position: relative;
+}
+.new_img img {
+  max-width: 100%;
+  max-height: auto;
+}
+ .img_slider li{
+  width : 1024px;
+  height: 25%;
+  text-align: center;
+  color: #FFF;
+  background-size:cover;
+  background-position: center;
+
+
+  display:none;
+  -webkit-display:block;
+} */
+
+
+
+/* -------------------------------------- 게시판 (본문 2단) */
+.note_container {
+  width: 100%;
+  /* height: 400px; */
+  display: flex;
+  justify-content: center;
+  position: relative;
+  top: 100px;
+  background-color: white;
+  padding-bottom: 30px;
+}
+.note_wrapper1 {
+  width: 1024px;
+  display: flex;
+  box-sizing: border-box;
+  margin: 0;
+  margin-top: 50px;
+}
+.note_box {
+  display: block;
+  width: 100%;
+  max-width: 340px;
+  height: 350px;
+  overflow : hidden;
+  margin: 0 5px;
+}
+.note_title {
+  font-size: 1.2em;
+  text-align: center;
+  height: 15%;
+  line-height: 45px;
+  font-family: 'Do Hyeon', sans-serif;
+  font-weight: bold;
+}
+/* --------------------------공지사항 세부설정 */
+.note_notice {
+  color: black;
+  font-size: 1em;
+}
+.note_notice .note_title {
+  border-bottom: 1px solid gray;
+}
+.note_notice > ul {
+  margin: 0;
+  padding: 10px 5px 0px 10px;
+}
+.note_notice > ul > li {
+  position: relative;
+  box-sizing: border-box;
+  padding: 0; 
+  margin: 0.6em 0.3em;
+  width: 300px;
+}
+.note_notice > ul > li a {
+  padding: 0;
+  margin: 0;
+  display: inline-block;
+  color: black;
+}
+.note_notice > ul > li span {
+  position: absolute;
+  top: 0; right: 1.7em;
+  padding: 0;
+  margin: 0;
+}
+/* -------------------------------------- 게시판 (본문 3단) */
+.note_container2 {
+  width: 100%;
+  height: 200px;
+  display: flex;
+  justify-content: center;
+  position: relative;
+  top: 100px;
+  background-color: white;
+}
+.note_wrapper2 {
+  width: 1024px;
+  display: flex;
+  box-sizing: border-box;
+  margin: 0;
+  margin-top: 50px;
+}
+.note_box2 {
+  width: 100%;
+  height: 350px;
+}
+/* -------------------------------------- 푸터 */
+.footer_container {
+  width: 100%;
+  background-color: black;
+  color: white;
+  display: flex;
+  position: relative;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  top: 100px;
+}
+.footer_wrapper {
+  width: 1024px;
+  height: 200px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 0.9em;
+}
+.footer_logo {
+  display: inline-block;
+  flex-grow: 0;
+  flex-shrink: 1; 
+  flex-basis: 100px;
+  padding-right: 50px;
+}
+.footer_menu {
+  display: flex;
+  flex-direction: column;
+}
+.footer_menu1 {
+  color: white;
+  padding: 0;
+}
+/* ----------------------------------모바일용 서브 메뉴 설정 */
+#mobile {
+  position: fixed;
+  top:0px; left: -250px;  
+  z-index:1000;
+  padding: 100px 0 0 50px;
+  height:100%; width:200px; 
+  background-color: #FF86A4;
+  transition: left .5s;
+}
+#mobile a{
+  display:block;
+  width: 100px;
+  line-height: 60px;
+  font-family: 'Jua', sans-serif;
+  border-bottom: 2px dotted black;
+}
+#mobile.active {
+  left:0px;
+}
+.header_container .tab{
+  display:none;
+  position: absolute;
+  left:0; top:0;
+  width:40px; height:40px;
+}
+/* -------------------------------------- 미디어쿼리 : 태블릿 */
+
+@media screen and (max-width:1023px) {
+  /* ---------- 태블릿 헤더 ---------- */
+  .header_container{
+    height: 96px;
+  }
+  .header_logo {
+    display: inline-block;
+    flex-grow: 1;
+    flex-shrink: 1; 
+    flex-basis: 50px;
+  }
+  .header_wrapper {
+    width: 768px;
+  }
+  .header_wrapper .menu_list {
+    width: 600px;
+    font-size: 1.1em;
+  }
+.menu {
+  padding: 0;
+  margin-left: 1.7em;
+}
+  ul li {
+    display: inline-block;
+  }
+  ul li a {
+    color: white;
+    text-decoration: none;
+  }
+  .menu_forms{
+    float: right;
+  }
+  .menu.list5, .menu.list6, .menu.list7 {
+    font-size: 0.6em;
+    font-weight: normal;
+    padding: 0;
+    margin: 0;
+  }
+nav ul ul a {
+  display: block;
+  width: 100px;
+  line-height: 30px;
+  font-weight: 400; 
+}
+  /* ---------- 태블릿 공지사항 ---------- */
+  .note_notice {
+    font-size: 0.95em;
+  }
+  .note_notice > ul > li {
+    width: 250px; 
+  }
+  /* ---------- 태블릿 푸터 ---------- */
+  .footer_container {
+    width: 100%;
+    background-color: black;
+    color: white;
+    display: flex;
+    position: relative;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    top: 100px;
+  }
+  .footer_wrapper {
+    width: 768px;
+    height: 150px;
+  }
+  .footer_menu1 {
+    color: white;
+    padding: 0;
+  }
+  .footer_logo {
+    padding-right: 20px;
+  }
+  footer ul li {
+    padding-right: 1em;
+  }
+}
+/* -------------------------------------- 미디어쿼리 : 모바일 */
+@media screen and (max-width:767px) {
+  /* ---------- 모바일 헤더 ---------- */
+  .header_wrapper {
+    display: none;
+  }
+  .header_container .tab { 
+    display: block;
+  }
+ /* ---------- 모바일 1단 신메뉴 ---------- */
+  .newImg_container {
+    display: flex;
+    justify-content: center;
+    position: relative;
+    /* top: 100px; */
+  }
+  .new_img {
+    /* width : 1024px;
+    height: 800px; */
+    background-color: white;
+    position: relative;
+  }
+   /* ---------- 모바일 2단 박스 ---------- */
+   .note_container{
+     width: 100%;
+     height: 1200px;
+   }
+  .note_wrapper1 {
+    flex-direction: column;
+    width: 350px;
+  }
+  .note_notice {
+    color: black;
+    font-size: 1em;
+  }
+  .note_notice > ul > li span {
+    position: absolute;
+    top: 0; right: -4em;
+    padding: 0;
+    margin: 0;
+  }
+   /* ---------- 모바일 푸터 ---------- */
+  .footer_logo {
+    display: none;
+  }
+  .footer_wrapper {
+    width: 320px;
+    font-size: 0.7em;
+  }
+  footer  ul  li {
+    padding: 0; margin: 0;
+    margin-right: 15px;
+  }
+}
+
