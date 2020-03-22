@@ -197,6 +197,11 @@ ul, li {padding:0; margin:0;}/* 메뉴 글자꾸미기 */
 }
 .boardMenu {
   width: 50%;
+  display: flex;
+  justify-content: center;
+}
+.boardMenu img {
+  width: 100%;
 }
 
 
@@ -204,8 +209,9 @@ ul, li {padding:0; margin:0;}/* 메뉴 글자꾸미기 */
 /*  ================================================  푸터시작 */ 
 #footerContainerAll {
   width: 100%; height: 200px;
+  background-color: #EAEAEA;
+  margin-top: 50px;
   bottom: 0;
-  background-color: cornflowerblue;
   display: flex;
   justify-content: center;
 }
@@ -213,14 +219,32 @@ ul, li {padding:0; margin:0;}/* 메뉴 글자꾸미기 */
   width: 1024px;
   display: flex;
   flex-direction: row;
+  align-items: center;
 }
 .footerContent {
-  display: flex;
+  display: flex; 
   flex-direction: column;
+  /* justify-content: center; */
+  /* align-items: center; */
 }
-.footerLogo {
+.footerContent div {
+  
+}
+.footerContent div ul li a {
+  display: inline-block; 
+  padding: 10px 5px;
+  color: gray;
+}
+.footerContent div ul li{
+  display: inline-block; 
+  padding: 10px 10px;
+  color: gray;
+}
 
-}
+
+/* .footerLogo {
+  float: right;
+} */
 
 
 
