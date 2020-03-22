@@ -196,7 +196,7 @@ ul, li {padding:0; margin:0;}/* 메뉴 글자꾸미기 */
   flex-direction: row;
 }
 .boardMenu {
-  width: 50%;
+  width: 50%; 
   display: flex;
   justify-content: center;
 }
