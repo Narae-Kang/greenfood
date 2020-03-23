@@ -19,7 +19,6 @@
 <script src="<c:url value="/resources/js/vendor/jquery-ui-1.10.3.custom.min.js"/>"></script>	
 
 <!-- google font -->
-<link href="https://fonts.googleapis.com/css?family=Noto+Sans+KR:100,300,400,500,700,900&display=swap" rel="stylesheet">
 
 <!-- font-awesome -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.0-1/css/all.min.css" />  
@@ -27,8 +26,6 @@
 </head>
 <body>
 
-<!-- 이미지 불러오기 안됨 -->
-<%@ include file="main.jsp" %>		
 
 </body>
 </html>
