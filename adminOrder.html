@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>관리자 - 주문관리</title>
+  <link rel="stylesheet" type="text/css" href="css/main.css">
+  <script src="js/main.js"></script>
+  <style>
+    /* -----------------------관리자 페이지 공통 */
+    #adminContainer {
+      width: 100%; 
+      display: flex;
+      justify-content: center;
+      min-height: 64vh;
+    }
+    #adminWrapper {
+      width: 1024px;
+    }
+    #adminMenuBox ul li {
+      width: 100px; height: 40px;
+      display: inline-block;
+      border: 1px solid #d3d3d3;
+      text-align: center;
+      margin: 15px 5px 25px 0;
+    }
+    #adminMenuBox ul li a {
+    width: 100px; height:40px;
+    padding: 0 10px;
+    color: #d3d3d3;
+    font-size: 15px;
+    font-weight: 400;
+    line-height: 40px;
+    }
+
+  /* ----------------------- 주문관리 */
+    #adminOrderList table {
+      width: 100%; height: 20px;
+      vertical-align: middle;
+    }
+    #saveBtn {
+      float: right;
+      padding: 5px 10px;
+      margin-bottom: 10px;
+      background-color: #BCE074;
+      font-weight: bold;
+    }
+    /* #adminWrapper h2 {
+      font-size: 20px; 
+      font-weight: bold;
+      padding: 10px 0 20px 0;
+      color: #5c5858;
+    } */
+
+    #adminWrapper th, #adminWrapper td {
+      border: 1px solid gray;
+      text-align: center; 
+      vertical-align: middle;
+      padding: 8px 1px;
+      height: 20px;
+    }
+    #adminWrapper th{
+      background-color: #BCE074;
+      font-weight: bold;
+      border: 1px solid gray; 
+    }
+  </style>
+  <script>
+    window.addEventListener("load", init, false);
+
+    function init() {
+      //박스 색상 변경
+      changeColor(true);
+      //상태 변경 저장
+      saveBtn.addEventListener("click", function(e){
+        e.preventDefault();
+        alert("변경 사항을 저장하시겠습니까?")
+        document.getElementById("saveBtn").submit();
+
+      },false);
+    }
+
+
+    //현재 페이지 박스 색상 변경
+    function changeColor(flag) {
+      if(flag) {
+        var orderBox = document.getElementById("orderBox");
+        var orderBtn = document.getElementById("orderBtn");
+        orderBox.style.border="1px solid black";
+        orderBtn.style.color="black";
+      }
+    }
+
+  </script>
+  
+</head>
+<body>
+  <header id="header">
+    <div id="headerContainerAll">
+      <div id="headerContainer">
+
+        <div class="headerItem headerLogo"><a href=""><img src="img/tbanner3.jpg" alt="banner"></a></div>
+
+        <div class="headerItem headerNav">
+          <ul>
+            <li><a href="">맛있는 한끼</a>
+              <ul class="sub1">
+                <li class="sub1-1"><a href="">그린 정식</a></li>
+                <li class="sub1-2"><a href="">그린 덮밥</a></li>
+                <li class="sub1-3"><a href="">그린 스페셜</a></li>
+                <li class="sub1-4"><a href="">그린 다이어트</a></li>
+              </ul>
+            </li>
+            <li><a href="">고객 센터</a>
+              <ul class="sub2">
+                <li class="sub2-1"><a href="">후기</a></li>
+                <li class="sub2-2"><a href="">Q & A</a></li>
+                <li class="sub2-3"><a href="">공지사항</a></li>
+              </ul>
+            </li>
+          </ul>
+        </div> <!--headerNav-->
+        <div class="headerItem rightMenu">
+          <div class="iconMenu">
+            <div class="cart"><a href=""><i class="fas fa-shopping-cart fa-2x"></i></a></div>
+            <div class="mypage"><a href=""><i class="fas fa-user-edit fa-2x"></i></a></div>
+          </div>
+          <div class="memberMenu">
+            <div class="join"><a href="">JOIN</a></div>
+            <div class="login"><a href="">LOGIN</a></div>
+          </div>
+        </div>
+
+      </div> <!--headerWrapper 끝-->
+    </div> <!--headerContainer 끝-->
+  </header>
+  
+  <div id="adminContainer">
+    <div id="adminWrapper">
+      <div id="adminMenuBox">
+        <ul>
+          <li id="orderBox"><a href="adminOrder.html" id="orderBtn">주문 관리</a></li>
+          <li id="productBox"><a href="adminProduct.html" id="productBtn">상품 등록</a></li>
+          <li id="menuBox"><a href="#" id="menuBtn">식단 등록</a></li>
+        </ul>
+      </div>
+
+      
+      <form action="">
+        <div id="adminOrderList">
+          <table>
+            <input id="saveBtn" type="button" value="저장">
+            <!-- <h2>주문 관리</h2> -->
+            <colgroup>
+              <col width="3%">
+              <col width="16%">
+              <col width="9%">
+              <col width="25%">
+              <col width="12%">
+              <col width="10%">
+              <col width="16%">
+              <col width="9%">
+  
+            </colgroup>        
+  
+            <thead>
+              <tr>
+                <th></th>
+                <th>아이디</th>
+                <th>이름</th>
+                <th>주소</th>
+                <th>전화번호</th>
+                <th>주문일</th>
+                <th>주문상품</th>
+                <th>주문상태</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>1</td>
+                <td>aaaaaaaaaa@test.com</td>
+                <td>내순금돼지</td>
+                <td>서울특별시 강남구 그린푸드로 123 케이에이치 빌딩 31층</td>
+                <td>010-1234-5678</td>
+                <td>2020-01-01</td>
+                <td>그린 다이어트 30일권</td>
+                <td>
+                  <select name="status" id="status">
+                    <option value="1">미입금</option>
+                    <option value="2">결제완료</option>
+                    <option value="3">진행</option>
+                    <option value="4">취소</option>
+                    <option value="5">완료</option>
+                  </select>
+                </td>
+              </tr>
+              <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+              </tr>
+            </tbody>
+          </table>
+        </div> <!-- adminOrderList 끝 -->
+      </form>
+
+    </div> <!--adminWrapper끝-->
+  </div>  <!--adminContainer 끝-->
+
+
+
+  <footer id="footer">
+    <div id="footerContainerAll"> 
+      <div id="footerContainer">
+        <!--푸터 메뉴-->
+        <div class="footerContent">
+          <div class="linkMenu">
+            <ul>
+              <li><a href="">이용약관</a></li>
+              <li><a href="">개인정보취급방침</a></li>
+              <li><a href="">제휴문의</a></li>
+              <li><a href="">고객센터</a></li>
+              <li><a href="">Q&A문의</a></li>
+            </ul> 
+          </div>
+          <div class="teamInfo">
+            <ul>
+              <li>주식회사: GREEN FOOD</li>
+              <li>대표이사: 강나래</li>
+              <li>주소: 서울특별시 강남구 학동로 123</li>
+            </ul>
+          </div>   
+        </div>  <!-- footerContent끝 -->
+        <div class="footerLogo"><a href=""><img src="img/tbanner4.jpg" alt="banner"></a></div>
+      </div>  
+    </div>
+  </footer>
+
+</body>
+</html>
