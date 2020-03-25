@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=, initial-scale=1.0">
+  <title>리뷰 댓글</title>
+  <!-- 외부링크 -->
+  <link rel="stylesheet" href="css/greenMain.css" type="text/css">
+  <link rel="stylesheet" href="css/reviewReply.css" type="text/css">
+  <script src="js/reviewReply.js"></script>
+
+  <!-- font awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
+  <style>
+    *{ box-sizing: border-box;}
+    #replyContainer {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+    }
+    #replyWrapper {
+      width: 1024px;
+      background-color: rgb(247, 247, 247);
+    }
+    .replyContent {
+      border: 1px solid red;
+    }
+
+    /*작성자 정보*/
+    .col  {
+      padding: 5px 10px;
+      white-space: nowrap;
+    }
+    .replyTitle, .titleBtn {
+      display: flex;
+      align-items: center;
+    }
+
+     .titleBtn{
+      width: 100%;
+      display: flex;
+      justify-content: flex-end;
+    } 
+
+
+  </style>
+</head>
+<body>
+  <div id="replyContainer">
+    <div id="replyWrapper">
+      <!-- 헤드 -->
+      <div class="replyContent replyTitle">
+        <div class="col titleName"><b>작성자</b></div>
+        <div class="col titleDate">2020-01-01 22:00</div>
+        <div class="col titlerRe"><i class="far fa-comment-dots"></i></div>
+        <div class="col titleBtn">
+
+            <div><a href="">1</a></div>
+            <div><a href="">2</a></div>
+
+        </div>
+
+      </div>
+      <!-- 바디 -->
+      <div class="replyContent replyBody">
+        <span id="bodyContent">
+          <span id="bodyPwriter">원댓</span>
+          댓글내용
+        </span>
+      </div>
+
+    </div>
+  </div>
+ 
+</body>
+</html>
