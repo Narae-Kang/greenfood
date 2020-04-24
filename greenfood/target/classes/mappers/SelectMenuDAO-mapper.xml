@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="mappers.SelectMenuDAO-mapper">
+
+<insert id="choiceMenu"
+				parameterType="hashmap">
+insert into select_menu
+(snum, sdate, smenu, 
+ smnum, sid
+ )values(
+ SELECT_MENU_SNUM_SEQ.nextval,
+ (select mdate from menu_name where mnum=#{mnum}),
+ (select maindish from menu_name where mnum=#{mnum}),
+ (select mnum from menu_name where mnum=#{mnum}),
+  #{sid} 
+ )
+</insert>
+
+</mapper>

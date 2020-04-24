@@ -1,0 +1,77 @@
+@charset "UTF-8";
+      .col{
+           /*  background-color:rgb(241, 241, 241);    */
+           font-weight: bold;
+           font-family: 'Noto Sans KR', sans-serif;
+           font-size: 14px;
+       }
+       td{
+       /*     border-bottom:1px solid rgba(0, 0, 0, 0.212);
+           border-top:1px solid rgba(0, 0, 0, 0.212); */
+           padding: 15px 10px 0 10px;
+       }
+       table{
+           border-collapse: collapse;
+       }
+       #row{
+           padding-right: 10px;
+           padding-top: 10px;
+       }
+       input{
+           padding: 10px 0 10px 0;
+           width: 300px;
+           font-size: 11px;
+           
+       }
+       .addressApi div{
+       	 	margin-bottom: 5px;
+       }
+       .modifyClickBtn, .modifyOutClickBtn{
+       			display: flex;
+       			justify-content: center;
+       }
+        #modifyBTN{
+           margin-left: 100px;
+           margin-top: 10px;
+           width: 300px;
+           height: 50px;
+           background-color: rgba(155, 145, 145, 0.253);
+           border: 1px solid rgba(0, 0, 0, 0.212);
+           justify-content: center;
+           font-family: 'Noto Sans KR', sans-serif;
+       }
+        #modifyOutBTN{
+           margin-left: 100px;
+       	   margin-top: 10px;
+           width: 300px;
+           height: 50px;
+           border: 1px solid rgba(0, 0, 0, 0.212);
+           justify-content: center;
+           font-family: 'Noto Sans KR', sans-serif;
+           background-color: rgb(188, 224, 116);
+       }
+				.container2 {
+					display: flex;
+					justify-content: center;
+				}
+				#user_id_checkBtn{
+					background-color: #333333;
+					color:white;
+					width: 100px;
+					border: 1px solid rgba(0, 0, 0, 0.212);
+				}
+				h1{
+					text-align: center;
+					font-size: 20px;
+					padding : 20px 0 20px 0;
+					font-family: 'Noto Sans KR', sans-serif;
+				}
+				#modifyFrm{
+					margin-top: 100px;
+				}
+				.errmsg {
+					color: red;
+					font-size: 12px;
+					font-weight: bold;
+					font-family: 'Noto Sans KR', sans-serif;
+				}

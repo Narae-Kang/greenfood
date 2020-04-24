@@ -1,0 +1,401 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="mappers.AdminDAO-mapper">
+
+<!-- ============================ 주문 관리 ====================== -->
+
+<resultMap id="memberMap" type="java.util.HashMap">
+    <id property="id" column="ID" />
+    <result column="name" property="NAME"/>
+    <result column="tel" property="TEL"/>
+    <result column="address" property="ADDRESS"/>
+    <collection property="attachListList" javaType="java.util.ArrayList" resultMap="orderDetailMap"/>
+</resultMap>
+
+<resultMap id="orderDetailMap" type="java.util.HashMap">
+     <id property="num" column="RNUM"/> 
+    <result column="rcdate" property="RCDATE"/>
+    <result column="pname" property="PNAME"/>
+    <result column="state" property="STATE"/>
+</resultMap>
+
+
+<!-- 관리자페이지 목록 불러오기 -->
+<select id="selectAdminMember" parameterType="java.util.HashMap" resultType="MemberVO">
+    SELECT        t1.id, t1.name, t1.tel, t1.address, 
+                         t2.rnum, t2.rcdate, t2.pname, t2.state
+    FROM          member t1 
+    LEFT JOIN    orders_detail t2
+    ON            t1.id = t2.rid
+</select>
+
+	<!-- 검색어 있는 게시글검색() -->
+	<select id="selectAdminList3"
+					parameterType="java.util.HashMap"
+					resultType="MemberVO">
+    SELECT        id, name,tel, address, 
+                  rnum, rcdate, pname, state
+    FROM          (SELECT row_number() over(order by rnum desc) as num,
+                           t1.id, t1.name, t1.tel, t1.address, 
+                           t2.rnum, t2.rcdate, t2.pname, t2.state
+                    FROM         member t1 
+                    LEFT JOIN    orders_detail t2
+                    ON           t1.id = t2.rid
+		
+     <if test="searchType != null and list != null"> 
+   		WHERE
+	 		<foreach item="item" collection="list"
+	 			open="(" separator="or" close=")">   		
+      <choose>
+      	<!-- 주문번호 -->
+      	<when test="searchType == 'B'.toString()">
+      		rnum 	 like  '%'||#{item}||'%' 
+      	</when>
+      	<!-- 주문일 -->
+      	<when test="searchType == 'C'.toString()">
+      		rcdate 	 like '%'||#{item}||'%'             	
+      	</when>
+      	<!-- 상품명 -->
+      	<when test="searchType == 'D'.toString()">
+      		pname like '%'||#{item}||'%'             	
+      	</when>               	
+      	<!-- 아이디 -->
+      	<when test="searchType == 'E'.toString()">
+      		id like '%'||#{item}||'%'                	
+      	</when>                 	
+      	<!-- 이름 -->
+      	<when test="searchType == 'F'.toString()">
+      		name like '%'||#{item}||'%'                	
+      	</when>   
+      	<!-- 전화번호 -->
+      	<when test="searchType == 'G'.toString()">
+      		tel like '%'||#{item}||'%'                	
+      	</when>   
+      	<!-- 주소 -->
+      	<when test="searchType == 'H'.toString()">
+      		address like '%'||#{item}||'%'                	
+      	</when>   
+      	<!-- 주문상태 -->
+      	<when test="searchType == 'I'.toString()">
+      		state like '%'||#{item}||'%'                	
+      	</when>     
+      	<!-- 전체 -->              	
+       <otherwise>
+      			 rnum 	 	like '%'||#{item}||'%'                 
+          or rcdate 	like '%'||#{item}||'%' 
+          or pname 		like '%'||#{item}||'%' 
+          or id 			like '%'||#{item}||'%' 
+          or name 		like '%'||#{item}||'%' 
+          or tel 			like '%'||#{item}||'%' 
+          or address 	like '%'||#{item}||'%' 
+          or state 		like '%'||#{item}||'%' 
+       </otherwise>
+      </choose>
+      </foreach>  
+     </if>  
+                   )                        
+      WHERE num between #{startRec} and #{endRec}  
+      ORDER BY rnum asc 
+	</select>
+	
+		<!-- 총 레코드수 -->
+	<select id="selectAdminTotalRecordCount"
+					parameterType="map"
+					resultType="int">
+    select count(id) 
+    from member t1
+    left join orders_detail t2
+    on t1.id = t2.rid
+	 
+	 <if test="searchType != null and list != null"> 
+   		where
+	 		<foreach item="item" collection="list"
+	 			open="(" separator="or" close=")">   		
+      <choose>
+      	<!-- 주문번호 -->
+      	<when test="searchType == 'B'.toString()">
+      		rnum 	 like  '%'||#{item}||'%' 
+      	</when>
+      	<!-- 주문일 -->
+      	<when test="searchType == 'C'.toString()">
+      		rcdate 	 like '%'||#{item}||'%'             	
+      	</when>
+      	<!-- 상품명 -->
+      	<when test="searchType == 'D'.toString()">
+      		pname like '%'||#{item}||'%'             	
+      	</when>               	
+      	<!-- 아이디 -->
+      	<when test="searchType == 'E'.toString()">
+      		id like '%'||#{item}||'%'                	
+      	</when>                 	
+      	<!-- 이름 -->
+      	<when test="searchType == 'F'.toString()">
+      		name like '%'||#{item}||'%'                	
+      	</when>   
+      	<!-- 전화번호 -->
+      	<when test="searchType == 'G'.toString()">
+      		tel like '%'||#{item}||'%'                	
+      	</when>   
+      	<!-- 주소 -->
+      	<when test="searchType == 'H'.toString()">
+      		address like '%'||#{item}||'%'                	
+      	</when>   
+      	<!-- 주문상태 -->
+      	<when test="searchType == 'I'.toString()">
+      		state like '%'||#{item}||'%'                	
+      	</when>     
+  
+      	<!-- 전체 -->              	
+       <otherwise>
+      			 rnum 	 	like '%'||#{item}||'%'                 
+          or rcdate 	like '%'||#{item}||'%' 
+          or pname 		like '%'||#{item}||'%' 
+          or id 			like '%'||#{item}||'%' 
+          or name 		like '%'||#{item}||'%' 
+          or tel 			like '%'||#{item}||'%' 
+          or address 	like '%'||#{item}||'%' 
+          or state 		like '%'||#{item}||'%' 
+       </otherwise>
+      </choose>
+      </foreach>  
+     </if>                   
+       
+	</select>
+
+<!-- 관리자 페이지 주문 상태 수정 -->
+<update id="adminStateModify" parameterType="MemberVO">
+   UPDATE orders_detail
+      SET state = #{state} ,
+          rudate = systimestamp
+    WHERE rnum = #{rnum}
+      and rid = #{id}
+</update>
+
+<!-- ============================ 식단 관리 ====================== -->
+<!-- 식단등록 -->
+<insert id="adminWrite"
+				parameterType="MenuVO">
+	INSERT INTO menu_name (
+	  mnum, 
+	  menu, maindish, rice,
+	  side1, side2, side3, side_side,
+	  salad, cal, soup, mdate
+	) VALUES (
+	  MENU_NAME_MNUM_SEQ.nextval,
+	  #{menu}, #{maindish}, #{rice},
+	  #{side1}, #{side2}, #{side3}, #{side_side}, 
+	  #{salad}, #{cal}, #{soup},  #{mdate}
+	)
+	<selectKey keyProperty="mnum" resultType="long" order="AFTER">
+		select MENU_NAME_MNUM_SEQ.currval from dual
+	</selectKey>
+</insert>
+
+<!-- 식단보기 -->
+<select id="adminView"
+				parameterType="long"
+				resultType="MenuVO">
+	SELECT
+	  mnum, menu, maindish, rice,
+	  side1, side2, side3, 
+	  side_side, salad, cal, 
+	  soup, mdate
+	FROM 	 menu_name
+	WHERE  mnum = #{mnum}
+</select>
+
+<!-- 식단수정 -->
+<update id="adminModify"
+				parameterType="MenuVO">
+	UPDATE menu_name
+	SET 	 menu = #{menu}, maindish = #{maindish}, rice = #{rice}, 
+				 side1 = #{side1}, side2 = #{side2}, side3 = #{side3},
+	  		 side_side = #{side_side}, salad = #{salad}, cal = #{cal},
+	  		 mdate = #{mdate}, soup = #{soup}
+	WHERE  mnum = #{mnum}		
+</update>
+
+<!-- 식단삭제 -->
+<delete id="adminDelete"
+				parameterType="long">
+	DELETE FROM menu_name WHERE mnum = #{mnum}		
+</delete>
+
+<!-- 식단 목록 -->
+<select id="adminMenuList"
+				resultType="MenuVO">
+	SELECT   mnum, menu, maindish, rice,
+				   side1, side2, side3, side_side,
+				   salad, cal, soup, mdate
+	FROM 		 menu_name
+	ORDER BY mdate desc
+</select>
+
+	<!-- 검색어 있는 게시글검색() -->
+	<select id="adminMenuList3"
+					parameterType="map"
+					resultType="MenuVO">
+	SELECT   mnum, menu, maindish, rice,
+				   side1, side2, side3, side_side,
+				   salad, cal, soup, mdate
+	FROM 		 (SELECT row_number() over(order by mnum desc) as num,
+									 mnum, menu, maindish, rice,
+				   				 side1, side2, side3, side_side,
+				   				 salad, cal, soup, mdate
+				   	FROM menu_name
+		
+     <if test="searchType != null and list != null"> 
+   		where
+	 		<foreach item="item" collection="list"
+	 			open="(" separator="or" close=")">   		
+      <choose>
+      	<!-- date -->
+      	<when test="searchType == 'B'.toString()">
+      		mdate 	 like  '%'||#{item}||'%' 
+      	</when>
+      	<!-- menu -->
+      	<when test="searchType == 'C'.toString()">
+      		menu 	 like '%'||#{item}||'%'             	
+      	</when>
+      	<!-- maindish -->
+      	<when test="searchType == 'D'.toString()">
+      		maindish like '%'||#{item}||'%'             	
+      	</when>               	
+      	<!-- rice -->
+      	<when test="searchType == 'E'.toString()">
+      		rice like '%'||#{item}||'%'                	
+      	</when>                 	
+      	<!-- side1 -->
+      	<when test="searchType == 'F'.toString()">
+      		side1 like '%'||#{item}||'%'                	
+      	</when>   
+      	<!-- side2 -->
+      	<when test="searchType == 'G'.toString()">
+      		side2 like '%'||#{item}||'%'                	
+      	</when>   
+      	<!-- side3 -->
+      	<when test="searchType == 'H'.toString()">
+      		side3 like '%'||#{item}||'%'                	
+      	</when>   
+      	<!-- side_side -->
+      	<when test="searchType == 'I'.toString()">
+      		side_side like '%'||#{item}||'%'                	
+      	</when>   
+      	<!-- salad -->
+      	<when test="searchType == 'J'.toString()">
+      		salad like '%'||#{item}||'%'                	
+      	</when>   
+      	<!-- soup -->
+      	<when test="searchType == 'K'.toString()">
+      		soup like '%'||#{item}||'%'                	
+      	</when>    
+  
+      	<!-- 전체 -->              	
+       <otherwise>
+      			 mdate 	 			like '%'||#{item}||'%'                 
+          or menu 				like '%'||#{item}||'%' 
+          or maindish 		like '%'||#{item}||'%' 
+          or rice 				like '%'||#{item}||'%' 
+          or side1 				like '%'||#{item}||'%' 
+          or side2 				like '%'||#{item}||'%' 
+          or side3 				like '%'||#{item}||'%' 
+          or side_side 		like '%'||#{item}||'%' 
+          or salad 				like '%'||#{item}||'%' 
+          or soup 				like '%'||#{item}||'%' 
+       </otherwise>
+      </choose>
+      </foreach>  
+     </if>  
+                   )                        
+      WHERE num between #{startRec} and #{endRec}  
+      ORDER BY mdate desc 
+	</select>
+	
+		<!-- 총 레코드수 -->
+	<select id="totalRecordCount"
+					parameterType="map"
+					resultType="int">
+	   	SELECT count(mnum)
+	    FROM menu_name
+	 
+	 <if test="searchType != null and list != null"> 
+   		where
+	 		<foreach item="item" collection="list"
+	 			open="(" separator="or" close=")">   		
+      <choose>
+<!--       	date -->
+      	<when test="searchType == 'B'.toString()">
+      		mdate 	 like  '%'||#{item}||'%' 
+      	</when>
+<!--       	menu -->
+      	<when test="searchType == 'C'.toString()">
+      		menu 	 like '%'||#{item}||'%'             	
+      	</when>
+<!--       	maindish -->
+      	<when test="searchType == 'D'.toString()">
+      		maindish like '%'||#{item}||'%'             	
+      	</when>               	
+<!--       	rice -->
+      	<when test="searchType == 'E'.toString()">
+      		rice like '%'||#{item}||'%'                	
+      	</when>                 	
+<!--       	side1 -->
+      	<when test="searchType == 'F'.toString()">
+      		side1 like '%'||#{item}||'%'                	
+      	</when>   
+<!--       	side2 -->
+      	<when test="searchType == 'G'.toString()">
+      		side2 like '%'||#{item}||'%'                	
+      	</when>   
+<!--       	side3 -->
+      	<when test="searchType == 'H'.toString()">
+      		side3 like '%'||#{item}||'%'                	
+      	</when>   
+<!--       	side_side -->
+      	<when test="searchType == 'I'.toString()">
+      		side_side like '%'||#{item}||'%'                	
+      	</when>   
+<!--       	salad -->
+      	<when test="searchType == 'J'.toString()">
+      		salad like '%'||#{item}||'%'                	
+      	</when>   
+<!--       	soup -->
+      	<when test="searchType == 'K'.toString()">
+      		soup like '%'||#{item}||'%'                	
+      	</when>    
+  
+<!--       	전체              	 -->
+       <otherwise>
+      			 mdate 	 			like '%'||#{item}||'%'                 
+          or menu 				like '%'||#{item}||'%' 
+          or maindish 		like '%'||#{item}||'%' 
+          or rice 				like '%'||#{item}||'%' 
+          or side1 				like '%'||#{item}||'%' 
+          or side2 				like '%'||#{item}||'%' 
+          or side3 				like '%'||#{item}||'%' 
+          or side_side 		like '%'||#{item}||'%' 
+          or salad 				like '%'||#{item}||'%' 
+          or soup 				like '%'||#{item}||'%' 
+       </otherwise>
+      </choose>
+      </foreach>  
+     </if>                   
+       
+	</select>
+	
+</mapper>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

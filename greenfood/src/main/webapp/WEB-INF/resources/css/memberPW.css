@@ -1,0 +1,49 @@
+@charset "UTF-8";
+			#findpw{
+					min-height: 36vh; 
+					display: flex;
+					justify-content: center;
+			}
+ 	    .col{
+           width: 100px;
+           padding: 10px 10px 10px 10px;
+       }
+       table{
+           border-collapse: collapse;
+           font-size: 14px;
+       }
+       td{
+           padding: 0px 0 5px 0;
+       }
+       .row input[type="text"], .row input[type="password"]{
+            width: 350px;
+            height: 50px;
+       }
+       input,select{
+           padding: 10px 0 10px 10px;
+           font-size: 12px;
+       }
+       #findPWBtn{
+ 		   		width: 100%;
+           height: 60px;
+           border: 1px solid rgba(0, 0, 0, 0.212);
+           background-color:rgb(188, 224, 116);
+           font-size: 17px;
+           font-weight: 500;
+           color: white;  
+           margin: 10px 0 10px 0;     
+           }
+       .id, .pw{
+       		font-size: 14px;
+       }
+       h1{
+       		padding: 170px 0 20px 0;
+       		text-align: center;
+       		font-size:30px;
+       		font-family: 'Noto Sans KR', sans-serif;
+       }
+       .errmsg {
+					color: red;
+					font-size: 12px;
+					font-weight: bold;
+				}

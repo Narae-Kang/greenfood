@@ -1,0 +1,210 @@
+@charset "UTF-8";
+td>a:hover {
+	text-decoration: underline;
+}
+.content {
+	min-height: 64vh;
+}
+.contents-inner {
+	margin: 0 auto;
+	max-width: 1200px;
+}
+.m2 {
+	margin-top: 80px;
+}
+.title {
+	color: #333;
+	margin: 0 0 20px;
+	padding: 0 0 20px;
+	text-align: center;
+}
+
+.notice {
+	display: inline-block;
+	padding: 7px 14px;
+	border-bottom: 1px solid #666;
+	font-size: 13px;
+}
+
+table {
+	width: 100%;
+}
+
+table, th, td {
+	border-spacing: 0;
+	border: 0;
+	border-collapse: collapse;
+	vertical-align: middle;
+}
+
+thead {
+	border-top: 1px solid #dbdbdb;
+}
+
+th {
+	font-size: 12px;
+	padding: 10px 0;
+	border-bottom: 1px solid #dbdbdb;
+	background: #f7f7f7;
+}
+
+.tr-body {
+	height: 50px;
+}
+
+td {
+	border-bottom: 1px solid #dbdbdb;
+	font-size: 12px;
+	color: #444;
+}
+
+.ta-c {
+	text-align: center;
+}
+
+tbody {
+	display: table-row-group;
+	vertical-align: middle;
+	border-color: inherit;
+}
+
+colgroup {
+	display: table-column-group;
+}
+
+col {
+	display: table-column;
+}
+
+.btn-area {
+	display: flex;
+	justify-content: flex-end;
+}
+
+#writeBtn {
+	margin-top: 12px;
+	width: 100px;
+	height: 42px;
+	line-height: 40px;
+	font-size: 11px;
+	background: #BCE074;
+	border: 1px solid rgba(0, 0, 0, 0.212);
+	color: #fff;
+}
+
+#writeBtn:hover, #searchBtn:hover {
+	background: white;
+	color: #222;
+	transition: 0.3s;
+}
+
+nav {
+	display: block;
+}
+
+.paging {
+	padding: 12px 0 0;
+	margin: 0;
+	text-align: center;
+}
+
+.paging li {
+	display: inline-block;
+	margin: 0 2px;
+}
+
+.paging li a {
+	height: 21px;
+	text-align: center;
+	display: block;
+}
+
+.front-paging {
+	width: 27px;
+	border: 1px solid #e0e0e0;
+}
+
+#ll {
+	background:
+		url("../img/icon_arrow_page_ll.png")
+		no-repeat center center;
+}
+
+#l {
+	background:
+		url("../img/icon_arrow_page_l.png")
+		no-repeat center center;
+}
+
+#r {
+	background:
+		url("../img/icon_arrow_page_r.png")
+		no-repeat center center;
+}
+
+#rr {
+	background:
+		url("../img/icon_arrow_page_rr.png")
+		no-repeat center center;
+}
+
+.paging-number {
+	padding: 4px 10px 2px;
+	font-size: 12px;
+}
+
+.search-area {
+	padding: 10px;
+	border: 1px solid #e8e8e8;
+	border-left: 0;
+	border-right: 0;
+	background: #f7f7f7;
+	margin-top: 12px !important;
+	text-align: center;
+}
+
+.search-item {
+	display: inline-block;
+	background: #fff;
+	vertical-align: middle;
+}
+
+#searchType {
+	height: 28px;
+	border: 1px solid #d0d0d0;
+	font-size: 11px;
+}
+
+.search-item-keyword {
+	width: 210px;
+	height: 26px;
+	border: 1px solid #d0d0d0;
+}
+
+#keyword {
+	width: 100%;
+	height: 24px;
+	padding: 0;
+	border: 1px solid #fff;
+	color: #979797;
+	line-height: 24px;
+	font-size: 11px;
+}
+
+#searchBtn {
+	width: 50px;
+	height: 28px;
+	line-height: 26px;
+	font-size: 11px;
+	background: #BCE074;
+	border: 1px solid rgba(0, 0, 0, 0.212);
+	color: #fff;
+}
+
+#pagingnumber {
+	border: 1px solid #3e3d3c;
+}
+
+.prev-next {
+	padding: 0 0 6px;
+}

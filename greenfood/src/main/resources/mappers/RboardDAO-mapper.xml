@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="mappers.RboardDAO-mapper">
+
+<!-- 댓글 작성 -->
+<insert id="replyWrite"
+				parameterType="RboardVO">
+	INSERT INTO rboard (
+	  rnum, rid, bnum, rname, rcontent, rgroup
+	) VALUES (
+	   RBOARD_RNUM_SEQ.nextval,
+	   #{rid},
+	   #{bnum},
+	   #{rname},
+	   #{rcontent},
+	   RBOARD_RNUM_SEQ.currval
+	)
+</insert>
+
+<!-- 댓글 수정 -->
+<update id="replyModify"
+				parameterType="RboardVO">
+	UPDATE rboard
+		SET
+			rudate = systimestamp,
+		  rcontent = #{rcontent}
+		WHERE  rnum = #{rnum}
+</update>
+
+<!-- 댓글 삭제 -->
+<delete id="replyDelete"
+ 				parameterType="RboardVO">
+	DELETE FROM rboard WHERE rnum = #{rnum}
+</delete>
+
+<!-- 대댓글 작성 -->
+<insert id="rereplyWrite"
+				parameterType="RboardVO">
+	INSERT INTO rboard (
+	  rnum, 
+	  rid, 		 bnum, 	 rname, 	 rcontent, 		rgroup,
+	  rindent, 				rstep, 		 prnum, 	 prid,	 prname
+	) VALUES (
+	  RBOARD_RNUM_SEQ.nextval, 
+	  #{rid}, #{bnum}, #{rname}, #{rcontent}, #{rgroup},
+	  #{rindent}+1, #{rstep}+1, #{prnum}, #{prid}, #{prname}	
+	)
+</insert>
+
+<!-- 부모 댓글 step 업데이트 -->
+<update id="replyUpdateStep"
+				parameterType="map">
+	UPDATE rboard
+		SET rstep = rstep + 1
+		WHERE rgroup = #{rgroup} 
+		AND rstep > #{rstep}
+</update>
+
+<!-- 댓글 정보 읽어오기 (부모댓글 정보 가져오기) -->
+<select id="replyView"
+				parameterType="long"
+				resultType="RboardVO">
+	SELECT rid, bnum, rname, rgroup, rindent, rstep
+		FROM rboard
+		WHERE rnum = #{rnum}
+</select>
+
+<!-- 댓글목록 -->
+<select id="replyList"
+				parameterType="map"
+				resultType="RboardVO">
+	select g1.rnum, g1.bnum, g1.rid, g1.rname, g1.rcdate,
+	       g1.rcontent, g1.rgroup, g1.rstep, g1.rindent, g1.prnum, g1.prid, g1.prname
+	  from 
+	    (select rnum, bnum, rid, rname, rcdate,
+	            rcontent, rgroup, rstep, rindent, prnum, prid, prname
+	      from
+	        (select row_number() over (order by rgroup desc, rstep asc) as  num, 
+	          t1.rnum, t1.bnum, t1.rid, t1.rname, t1.rcdate,
+	          t1.rcontent, t1.rgroup, t1.rstep, t1.rindent, t1.prnum, t1.prid, t1.prname
+	          from rboard t1
+	          where bnum = #{bnum}
+	        )
+	        where num between #{startRec} and #{endRec}
+	        ) g1
+<!-- 	  where g1.rnum = t1.rnum -->
+</select>
+
+<!-- 댓글 총계 -->
+<select id="replyAll"
+				parameterType="long"
+				resultType="int">
+	select count(rnum) from rboard where bnum = #{bnum}
+</select>
+
+</mapper>
+

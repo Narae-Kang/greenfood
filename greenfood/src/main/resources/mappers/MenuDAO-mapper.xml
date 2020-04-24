@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="mappers.MenuDAO-mapper">
+
+<!-- 그린정식 식단목록 조회 -->
+<select id="listJS"
+				resultType="MenuVO">
+SELECT  menu, maindish, rice, 
+        side1, side2, side3, 
+        side_side, cal,
+        soup, (SELECT TO_CHAR ( mdate ,  'YYYY-MM-DD' )  FROM dual) as mdate
+        <!-- mdate -->
+  FROM  menu_name
+ WHERE  menu = '그린정식'
+ order by mdate asc
+
+</select>
+
+<!-- 그린덮밥 식단목록 조회 -->
+<select id="listRice"
+				resultType="MenuVO">
+SELECT  menu, maindish, rice, 
+        side_side,
+        salad, cal,
+        (SELECT TO_CHAR ( mdate ,  'YYYY-MM-DD' )  FROM dual) as mdate
+  FROM  menu_name
+ WHERE  menu = '그린덮밥'
+ order by mdate asc
+
+</select>
+
+<!-- 그린스페셜 식단목록 조회 -->
+<select id="listSP"
+				resultType="MenuVO">
+SELECT  menu, maindish, rice, 
+        side_side,
+        salad, cal,
+        (SELECT TO_CHAR ( mdate ,  'YYYY-MM-DD' )  FROM dual) as mdate
+  FROM  menu_name
+ WHERE  menu = '그린스페셜'
+ order by mdate asc
+</select>
+
+<!-- 그린다이어트 식단목록 조회 -->
+<select id="listDiet"
+				resultType="MenuVO">
+SELECT  menu, maindish, rice, 
+        side1, soup,
+        cal,
+        (SELECT TO_CHAR ( mdate ,  'YYYY-MM-DD' )  FROM dual) as mdate
+  FROM  menu_name
+ WHERE  menu = '그린다이어트'
+ order by mdate asc
+</select>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</mapper>

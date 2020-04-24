@@ -1,0 +1,255 @@
+/* /* @charset "UTF-8";
+@charset "utf-8";
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+    font-family: 'Noto Sans KR', sans-serif;}
+html, body { min-height:100%; line-height: 1; }
+ol, ul { list-style: none; }
+table {   border-collapse: collapse; border-spacing: 0;}
+ * { 
+  list-style: none; ul 앞에 점 제거
+  text-decoration: none;  a태그 밑줄제거 
+  font-family: 'Noto Sans KR', sans-serif;
+}
+html{   position:relative; }
+================================================ 헤더시작  
+#headerContainerAll {
+  width: 100%; height: 100px;
+  display: flex;
+  justify-content: center;
+  border-bottom: 1px solid gray
+}
+#headerContainer {   
+  width: 1024px; 
+  display: flex;
+  flex-direction: row;
+}
+.headerItem:nth-child(1) {flex: 1;} 
+.headerItem:nth-child(2) {flex: 3;}
+.headerItem:nth-child(3) {flex: 1;}
+
+.headerLogo {  
+  width: 250px; height: 70px;
+  justify-content: center;
+  align-self: center; 세로축 중앙정렬 
+}
+
+메뉴 시작 .headerNav
+.headerNav {
+  display: flex;
+  align-items: center;  
+  justify-content: center; 
+  text-align: center;  
+  width: 100%;
+}
+.headerNav ul li {
+  display: inline; 메뉴 가로 배치
+  font-family: 'Noto Sans KR', sans-serif;
+}
+.headerNav ul {   
+  font-size: 25px; 
+  position: relative; 
+}
+.headerNav li a {
+  margin: 0 50px;
+  color: gray;
+  font-weight: bold;
+}
+.headerNav > ul > li:hover > a, 
+.headerNav > ul > li:active > a{
+  color: darkseagreen;
+}
+---------------------------------- 서브메뉴 시작 .headerNav
+.headerNav ul ul {
+  display: none;
+  position: absolute;
+  z-index: 1;
+}
+ .headerNav ul ul li {
+  display: block;   서브메뉴 세로 정렬
+  min-width: 250px;
+} 
+.headerNav ul ul a {
+  display: block;
+  width: auto;
+  min-width: 170px;
+  opacity: 0.7;
+  background-color: rgb(255, 255, 255);
+  color: darkslategrey;
+  text-align: center;
+  transition: all .3s; 
+  padding: 8px 30px 10px 30px; 서브메뉴 패딩
+}
+.sub1 { left: -40px; } 서브메뉴 위치 조정
+.sub2 { left: 190px; }  서브메뉴 위치 조정
+
+.headerNav ul ul a:hover,  마우스 위로가져갔을때
+.headerNav ul ul a:focus{ tab키 눌렀을때
+  background-color: rgb(165, 231, 145);
+  opacity: 1;
+}
+.headerNav > ul > li:hover ul {
+  display: block;
+  z-index: 1;
+}
+오른쪽 미니 메뉴
+.rightMenu {
+  width: 100px;
+  padding: 25px 0 0 50px;
+  display: flex;
+  flex-wrap: nowrap;
+   flex-direction: column;
+   justify-content: center;
+   align-content: center;
+   
+}
+.iconMenu, .memberMenu {
+  width: 200px;
+  display: flex;
+  justify-content: flex-end;
+}
+.iconMenu div {
+  padding-right: 15px;
+}
+.memberMenu div {
+  padding: 8px 15px 0 0;
+}
+.iconMenu a, .memberMenu a{
+  font-size: 15px; color: gray;
+  color: rgb(81, 163, 56);
+}
+
+ ================================================  본문시작 
+#sectionContainer {
+  width: 100%;
+  display: flex; flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+슬라이드 쇼
+ .sectionSlide {
+  background-color: darkgray;
+  width: 100%; height: 500px;  
+}
+.sectionSlide img {
+  width: 100%; height: 500px; overflow: hidden;
+}
+타이틀 명
+.sectionTitle { 
+  width: 100%; height: 100px;
+  display: flex; align-items: center;
+}
+.sectionTitle  p {
+  color: black; font-size: 25px;
+  font-weight: bold;  
+}
+베스트상품
+.sectionBest {
+  width: 1024px; height: 500px;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.bestContent {
+  width: 100%; height: 400px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  border: 1px solid gray;
+
+}
+.bestMenu:nth-child(1) {flex: 2;} 
+.bestMenu:nth-child(2) {flex: 1;}
+.bestMenu:nth-child(3) {flex: 1;}
+.bestMenu img { padding: 0 5px; width: 100%; }
+
+.bestMenuInfo {
+  width: 100%;  min-height: 50px;
+   display: flex; 
+  align-items: center;
+  justify-content: center; 
+}
+.bestMenuInfo {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+.bestMenuInfo div {
+  padding-top: 15px;
+}
+.bestMenuInfo div p{
+  color : black; font-size: 16px;
+  font-weight: bold;
+}
+
+
+게시판
+.sectionBoard {
+  width: 1024px; height: 400px;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+} 
+.boardContent {
+  border: 1px solid gray;
+  width: 100%; height: 300px;
+  display: flex;
+  flex-direction: row;
+}
+.boardMenu {
+  width: 50%; 
+  display: flex;
+  justify-content: center;
+}
+.boardMenu img {
+  width: 100%;
+}
+
+
+
+ ================================================  푸터시작 
+#footerContainerAll {
+  position: relative;
+  bottom: 0;
+  width: 100%; height: 200px;
+  background-color: #EAEAEA;
+  margin-top: 50px;
+  display: flex;
+  justify-content: center;
+}
+#footerContainer {
+  width: 1024px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.footerContent {
+  display: flex; 
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.footerContent div {
+  
+}
+.footerContent div ul li a {
+  display: inline-block; 
+  padding: 10px 5px;
+  color: gray;
+}
+.footerContent div ul li{
+  display: inline-block; 
+  padding: 10px 10px;
+  color: gray;
+}
+
+
+ */ */

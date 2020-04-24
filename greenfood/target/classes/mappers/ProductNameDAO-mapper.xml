@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="mappers.ProductDAO-mapper">
+
+<!-- 상품명 읽어오기 -->
+<select id="getProduct"
+				resultType="ProductVO">
+select pnnum, pname, pnum
+from product
+</select>
+
+
+<!-- 그린정식 상품보기 -->
+
+<select id="viewGreenJS"
+				parameterType="long"
+				resultType="ProductVO">
+
+ SELECT
+ pnum,
+ pnnum as "productVO.pnnum",
+ pname as "productVO.pname",
+	pname,
+ regexp_replace(reverse(regexp_replace(reverse(to_char(price)), 
+ '([0-9]{3})','\1,')), '^,','') as price,
+  price,
+ pdetail
+ FROM product
+ WHERE pnnum = 1
+ and pnum = 1
+
+</select>
+
+
+
+<!-- 그린덮밥 상품보기 -->
+
+<select id="viewGreenRice"
+				parameterType="long"
+				resultType="ProductVO">
+ SELECT
+ pnum,
+ pnnum as "productVO.pnnum",
+ pname as "productVO.pname",
+	pname,
+ regexp_replace(reverse(regexp_replace(reverse(to_char(price)), 
+ '([0-9]{3})','\1,')), '^,','') as price,
+  price,
+ pdetail
+ FROM product
+ WHERE pnnum = 4
+ and pnum = 2
+</select>
+
+
+<!-- 그린스페셜 상품보기 -->
+
+<select id="viewGreenSP"
+				parameterType="long"
+				resultType="ProductVO">
+ SELECT
+ pnum,
+ pnnum as "productVO.pnnum",
+ pname as "productVO.pname",
+	pname,
+ regexp_replace(reverse(regexp_replace(reverse(to_char(price)), 
+ '([0-9]{3})','\1,')), '^,','') as price,
+  price,
+ pdetail
+ FROM product
+ WHERE pnnum = 7
+ and pnum = 3
+</select>
+
+
+<!-- 그린다이어트 상품보기 -->
+
+<select id="viewGreenDiet"
+				parameterType="long"
+				resultType="ProductVO">
+SELECT
+ pnum,
+ pnnum as "productVO.pnnum",
+ pname as "productVO.pname",
+	pname,
+ regexp_replace(reverse(regexp_replace(reverse(to_char(price)), 
+ '([0-9]{3})','\1,')), '^,','') as price,
+  price,
+ pdetail
+ FROM product
+ WHERE pnnum = 10
+ and pnum = 4
+</select>
+
+
+
+
+</mapper>

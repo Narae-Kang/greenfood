@@ -1,0 +1,142 @@
+@charset "UTF-8";
+				body{
+					font-family: 'Noto Sans KR', sans-serif;
+				}
+			
+				.orderRead{
+						display: flex;
+						justify-content: center;
+				}
+				#orderReadForm{
+						margin-top:60px;
+						max-width: 1200px;
+				}
+        .buy_tbl{
+            table-layout: fixed;
+            width: 100%;
+            border-collapse: collapse;	
+        }
+        .buy_tbl caption{
+            padding: 50px 0 17px 0;
+            color: #333;
+            font-size: 15px;
+            font-weight: 800;
+            text-align: left;
+        }
+        .buy_tbl th{
+            padding: 15px 0;
+            background: #f7f7f7;
+            color: #333;
+            font-family: 'Noto Sans KR', sans-serif;
+            font-size: 14px;
+            font-weight: 400;
+            text-align: center;
+            border-right:1px solid #e6e6e6 ;
+            border-left:1px solid #e6e6e6 ;
+            border-top:1px solid #e6e6e6 ;
+            
+        }
+        .buy_tbl td{
+            padding: 20px 0;
+            border-bottom: 1px solid #e6e6e6;
+            border-right:1px solid #e6e6e6 ;
+            border-left:1px solid #e6e6e6 ;
+            color: #333;
+            font-size: 14px;
+            text-align: center;
+            vertical-align: middle;
+        }
+        .delivery_tbl{
+            table-layout: fixed;
+            width: 100%;
+            border-collapse: collapse;
+        }
+        .delivery_tbl caption{
+            padding: 40px 0 17px 0;
+            color: #333;
+            font-size: 15px;
+            font-weight: 800;
+            text-align: left;
+        }
+        .delivery_tbl th{
+            font-size: 14px;
+            font-weight: 400;
+            background: #f7f7f7;
+            width: 170px;
+            padding: 20px 0 20px 0;
+            border-bottom: 1px solid #e6e6e6;
+            border-top: 1px solid #e6e6e6;
+        }
+        .delivery_tbl input{
+        		padding: 10px 0 10px 3px;
+        		width: 300px;
+        }
+        #addressBtn{
+       	 		height: 50px;
+        }
+        .addressApi div{
+       	 		margin-bottom: 5px;
+       }
+        .delivery_tbl td{
+            padding-left: 10px;
+            color: #333;
+            font-size: 14px;
+            vertical-align: middle;
+            border-bottom: 1px solid #e6e6e6;
+            border-top: 1px solid #e6e6e6;
+        }
+        .pay_tbl{
+            table-layout: fixed;
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 30px;
+        }
+        .pay_tbl th{
+            font-size: 14px;
+            font-weight: 400;
+            background: #f7f7f7;
+            width: 170px;
+            padding: 20px 0 20px 0;
+            border-bottom: 1px solid #e6e6e6;
+            border-top: 1px solid #e6e6e6;
+        }
+        .pay_tbl td{
+            padding:12px 0 12px 10px;
+            color: #333;
+            font-size: 14px;
+            vertical-align: middle;
+            border-bottom: 1px solid #e6e6e6;
+            border-top: 1px solid #e6e6e6;
+        }
+        .pay_tbl caption{
+            padding: 20px 0 17px;
+            font-size: 15px;
+            font-weight: 800;
+            text-align: left;
+        }
+        .menu_btn{
+            padding-top: 30px;
+            text-align: right;
+        }
+        #menu_cancle_btn{
+            width: 150px;
+            height: 50px;
+            font-size:14px; 
+            background-color:rgba(155, 145, 145, 0.253);
+            border: 1px solid #dfdfdf;
+        }
+        #menu_change_btn, #menu_modify_btn{
+	         	font-size:14px;
+          	width: 150px;
+            height: 50px;
+            color:white;
+            background-color:rgb(188, 224, 116);
+            border: 1px solid #dfdfdf;
+        }
+        textarea{
+        		width: 600px;
+    				height: 100px;
+        }
+        .dm{
+        		margin-top: 10px;
+        }

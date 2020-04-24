@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="mappers.MemberDAO-mapper">
+
+    <!--===========참고하세요==============
+   // ===DAO-mapper양식 : 메서드+Green====
+   // ===수업자료와 쿼리문 동일하나 확인!====
+   // ===ModelAttribute VO 객체: mvo=====
+   // ===파라미터타입, 결과타입은 동일함= -->
+   
+<!-- 회원 등록 -->
+<insert id="joinGreen" 
+            parameterType="MemberVO">
+      insert into member(
+      id, pw, name, tel, 
+      address, birth, cdate
+      )
+      values(
+      #{id},
+      #{pw},
+      #{name},
+      #{tel},
+      #{address},
+      #{birth},
+      systimestamp)
+</insert>
+<!-- 회원 수정 -->
+<update id="modifyGreen"
+            parameterType="MemberVO">
+update member
+   set tel= #{tel},
+            pw= #{pw},
+       name=#{name},
+       address=#{address},
+       birth=#{birth},
+       udate=systimestamp
+ where id = #{id}
+</update>
+
+<!-- 회원 개별조회 -->
+<select id="selectGreen"
+            parameterType="string"
+            resultType="MemberVO">
+select id, pw, tel, name,
+ 	SUBSTR(address,0,INSTR(address, ',', 1, 1)-1) as address1,
+ 	SUBSTR(address, INSTR(address, ',', 1, 1)+1, INSTR(address, ',', 1, 2)-7) as address2,
+ 	SUBSTR(address, INSTR(address, ',', 1, 2)+1, INSTR(address, ',', 1, 2)) as address3,
+birth, cdate, udate, admin from member where id = #{id}
+</select>
+<!-- 회원 탈퇴 -->
+<delete id="outGreen" 
+            parameterType="map">
+      delete from member where id=#{id} and pw=#{pw}
+</delete>
+<!-- 로그인 -->
+<select id="loginGreen"
+            parameterType="MemberVO"
+            resultType="MemberVO">
+SELECT id, pw, tel, name, address, birth, cdate, udate, admin
+   from member
+   where id = #{id}
+      and pw = #{pw}
+</select>
+<!-- 아이디 찾기 -->
+<select id="findID"
+            parameterType="MemberVO"
+            resultType="string">
+            select id from member
+            where tel = #{tel}
+              and birth = #{birth}
+</select>
+<!-- 비밀번호찾기 -->
+<update id="newPassword" parameterType="MemberVO">
+      update member
+      set pw = #{pw}
+      where id=#{id} and name=#{name}
+   </update>
+<!-- 비밀번호 변경 -->
+<!-- <update id="changePW"
+            parameterType="MemberVO">
+      update member 
+         set pw = #{pw} 
+       where id=#{id} 
+</update>       -->
+<!-- 비밀번호 변경 대상 찾기 -->
+<!-- <select id="findPW"
+            parameterType="MemberVO"
+            resultType="int">
+      select count(id) from member
+       where id=#{id} and tel=#{tel} and birth=#{birth}
+</select>  -->
+
+</mapper>

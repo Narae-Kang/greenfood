@@ -1,0 +1,149 @@
+@charset "UTF-8";
+        td>a:hover {
+        text-decoration: underline;
+    }
+        .content {
+        min-height: 64vh;
+    }
+        .contents-inner {
+            margin: 0 auto;
+            max-width: 1200px;
+    }
+    .c2 {
+    margin-top: 80px;
+    }
+			    .title {
+				color: #333;
+				margin: 0 0 20px;
+				padding: 0 0 20px;
+				text-align: center;
+			}
+			.notice {
+				display: inline-block;
+				padding: 7px 14px;
+				border-bottom: 1px solid #666;
+				font-size: 13px;
+			}
+        .present-root {
+            float: right;
+            margin-bottom: 20px;
+    }
+    	input[type=checkbox] {
+    		width: 20px;
+    		height: 20px;
+    	}
+        #one {
+            color: #BCE074;
+        }
+        .one {
+            color: #7ebf27;
+        }
+        .detail-area {
+        	color: #BCE074;
+        	line-height: 32px;
+        }
+        .cart-table {
+            width: 100%;
+    }
+        table, th, td {
+        border-spacing: 0;
+        border: 0;
+        border-collapse: collapse;
+        vertical-align: middle;
+    }
+        .cart-th {
+            font-size: 12px;
+            border-top: 1px solid #dbdbdb;
+            border-bottom: 1px solid #dbdbdb;
+            padding: 15px 0;
+            background: #f7f7f7;
+        }
+        .price-th {
+            text-align: left;
+        }
+        .tr-body {
+            height: 120px;
+            border-bottom: 1px solid #dbdbdb;
+        }
+        .price-tr {
+            height: 50px;
+        }
+        .td-record {
+        		font-size: 14px;
+            text-align: center;
+        }
+        .price-td {
+            text-align: right;
+        }
+        .product-name {
+            text-align: left;
+        }
+        .deleteBtn {
+            height: 40px;
+            line-height: 40px;
+            width: 90%;
+            background-color: white;
+            border: 1px solid #e6e6e6;
+        } 
+        .deleteBtn:hover,
+        #cleanBtn:hover,
+        #mainBtn:hover,
+        #orderBtn:hover {
+            transition: 0.3s;
+            border: 1px solid #333;
+            background-color: white;
+            color: black;
+        } 
+        .price-area {
+            position: relative;
+            border-bottom: 1px solid #dbdbdb;
+            padding: 10px 30px;
+            background: #f7f7f7;
+            text-align: right;
+        }
+        .price-table {
+            float: right;
+            width: 400px;
+        }
+        .price-area::after {
+            display: block;
+            clear: both;
+            content: '';
+        }
+        .cart-price {
+        	color: #BCE074;
+        	
+        }
+        .all-price {
+        	color: #BCE074;
+        	font-weight: bolder;
+        	font-size: 20px;
+        }
+        .btn-area {
+            margin: 20px 0;
+        }
+        .btn-area1 {
+            float: left;
+        }
+        .btn-area2 {
+            float: right;
+        }
+        #cleanBtn,
+        #mainBtn,
+        #orderBtn {
+            height: 50px;
+            width: 200px;
+        }
+        #cleanBtn {
+            background-color: white;
+            border: 1px solid #e6e6e6;
+        }
+        #mainBtn {
+            background-color: #333;
+            color: white;
+            border: 1px solid black;
+        }
+        #orderBtn {
+            background-color: #BCE074;
+            border: 1px solid rgba(0, 0, 0, 0.212);
+        }

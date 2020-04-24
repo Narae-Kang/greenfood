@@ -1,0 +1,223 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="mappers.OrderDAO-mapper">
+
+<!-- 장바구니 상품 불러오기 -->
+<select id="selectCart" resultType="CartVO" parameterType="string">
+select
+    tnum, tid,pname,amount,tprice,tpnum
+ from cart 
+     where tid = #{tid}
+</select>
+
+<!-- 개별 회원 정보 불러오기 -->
+<select id="selectMember" 
+            parameterType="OrdersInfoVO" 
+            resultType="OrdersInfoVO">
+<![CDATA[      
+select *
+from
+(
+select  fnum,    fid,    fname,    ftel,   
+    fdm,    fcdate,    fudate,
+SUBSTR(faddress, 0, INSTR(faddress, ',', 1, 1)-1) as address1,
+SUBSTR(faddress, INSTR(faddress, ',', 1, 1)+1, INSTR(faddress, ',', 1, 2)-7) as address2,
+SUBSTR(faddress, INSTR(faddress, ',', 1, 2)+1, INSTR(faddress, ',', 1, 2)) as address3
+from orders_info
+where fid = #{fid}
+order by fcdate desc
+)
+where rownum <= 1
+]]>
+</select>
+
+<!-- ORDERS_INFO 수령인 정보 저장 -->
+<insert id="insertInfo" parameterType="OrdersInfoVO" >
+INSERT INTO orders_info (
+    fnum,    fid,    fname,    ftel,
+    faddress,    fdm,    fcdate
+) VALUES (
+    ORDERS_INFO_FNUM_SEQ.nextval , #{fid}, #{fname},
+    #{ftel},#{faddress},#{fdm},systimestamp
+)
+</insert>
+
+<!-- ORDERS 총결제내역 저장 -->
+<insert id="insertOrders" parameterType="OrdersVO">
+INSERT INTO orders (
+    onum,    
+    oid,    
+    totalprice,    
+    ocdate,
+    payment  
+   ) VALUES (
+      ORDERS_ONUM_SEQ.NEXTVAL,
+      #{oid} ,
+      #{totalprice},
+      SYSTIMESTAMP,
+      #{payment}
+      )
+<selectKey keyProperty="onum" resultType="long" order="AFTER">
+         select ORDERS_ONUM_SEQ.currval from dual
+</selectKey>
+</insert>
+
+<!-- ORDERS_DETAIL 결제상세내역 저장 -->
+<insert id="insertDetail" parameterType="OrdersDetailVO">
+INSERT INTO orders_detail (
+    rnum,    
+    onum,    
+    pname,    
+    price,    
+    rcdate,  
+    amount,
+    rid
+) values (
+      ORDERS_DETAIL_RNUM_SEQ.NEXTVAL, 
+      #{onum},
+      #{pname},
+      #{price}, 
+      systimestamp , 
+      #{amount},
+      #{rid}
+      )
+
+</insert>
+
+<!-- 상세정보 -->
+<select id="selectDetail2" parameterType="map" resultType="OrdersDetailVO">
+select t1.onum, t2.onum, rnum, pname, amount, price, state,payment ,rid
+from orders t1, orders_detail t2
+where t1.onum = t2.onum and t2.rid= #{rid} and t2.onum=#{onum}
+order by t1.onum desc
+</select>
+
+<!-- 상세정보 -->
+<select id="selectDetail1" parameterType="string" resultType="OrdersDetailVO">
+select t1.onum,rnum, pname, amount, price, state, totalprice, payment ,oid ,rid
+from orders t1, orders_detail t2
+where t1.onum = t2.onum and t2.rid= #{rid}
+order by onum desc
+</select>
+
+<!-- 총결제내역 조회  -->
+<select id="selectOrders" parameterType="map" resultType="OrdersVO">
+select   onum,
+    oid,
+    totalprice,
+    ocdate,
+    oudate,
+    payment
+from orders
+where oid = #{oid} and onum=#{onum}
+order by ocdate desc
+</select>
+
+<!-- 장바구니 삭제  -->
+<delete id="cartAllDelete">
+delete cart where tid = #{tid}
+</delete>
+
+<!-- 결제 1건 -->
+<select id="oneCart" parameterType="string" resultType="CartVO">
+<![CDATA[
+select 
+          row_number() over(order by c.tnum desc) as num,
+     c.tnum,c.tpnum, c.tid, c.pname, p.pdetail, c.amount, tprice, amount,
+     regexp_replace(reverse(regexp_replace(reverse(to_char(tprice * amount)), 
+ '([0-9]{3})','\1,')), '^,','') as price, c.tcdate
+from cart c
+inner join product p
+on c.pname = p.pname
+where tid = #{tid}
+and rownum <=1
+order by tcdate desc
+]]>
+</select>
+
+<!-- 최근 장바구니 한건만 삭제 -->
+<delete id="cartOneDelete">
+DELETE FROM cart where tcdate in
+(select tcdate
+ from (select ROW_NUMBER() OVER( ORDER BY tcdate desc ) num, tcdate from cart where tid=#{tid} 
+    )where num=1)
+</delete>
+
+<!-- 선택한 메뉴 불러오기 -->
+<select id="selectMenuList" parameterType="string" resultType="SelectMenuVO">
+select * from select_menu where sid = #{sid}
+</select>
+
+<!-- 검색어 있는 게시글 검색 -->
+<select id="selectMenuList3" parameterType="map"
+               resultType="SelectMenuVO">
+   SELECT  snum, 
+               sdate, 
+               sid, 
+               smnum,
+               smenu
+   FROM    (SELECT row_number() over(order by sdate asc) as num,
+                      snum,
+                      sdate,
+                      sid, 
+                      smnum,
+                      smenu
+          FROM    select_menu
+          
+  <if test="searchType != null and list != null"> 
+         where
+   <foreach item="item" collection="list"
+      open="(" separator="or" close=")">   
+  <choose>
+    <!-- smenu -->
+    <when test="searchType == 'C'.toString()">
+       smenu     like '%'||#{item}||'%'                
+    </when>
+    <!-- 전체 -->                 
+  <otherwise>
+      smenu                like '%'||#{item}||'%' 
+  </otherwise>
+ </choose>
+</foreach>  
+  </if>      
+  )
+  where num between #{startRec} and #{endRec}  and sid =#{sid}
+  ORDER BY sdate asc 
+</select>
+
+<!-- 총레코드수 -->
+<select id="SelectMenuTotalRecordCount"
+            parameterType="map"
+            resultType="int">
+    SELECT count(snum)
+       FROM select_menu
+        <if test="searchType != null and list != null"> 
+         where
+          <foreach item="item" collection="list"
+             open="(" separator="or" close=")">         
+      <choose>
+       
+         <!--    smenu -->
+         <when test="searchType == 'C'.toString()">
+            smenu     like '%'||#{item}||'%'                
+         </when>
+         <!--    전체    -->
+       <otherwise>
+          smenu             like '%'||#{item}||'%'  and sid=#{sid}
+       </otherwise>
+      </choose>
+      </foreach>  
+     </if>        
+</select>
+
+<!-- 결제내역 갯수 -->
+<select id="orderCnt" resultType="int">
+select count(*) from orders where oid =#{oid}      
+</select>
+
+<!-- 주문 메뉴 갯수 -->
+<select id="menuCnt" resultType="int">
+select count(*) from select_menu where sid =#{sid}      
+</select>
+
+</mapper>

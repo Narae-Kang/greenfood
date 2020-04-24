@@ -1,0 +1,174 @@
+@charset "UTF-8";
+				body{
+						font-family: 'Noto Sans KR', sans-serif;
+				}
+				.aaa{
+						display: flex;
+						justify-content: center;
+				}
+				#cartForm{
+						margin-top:60px;
+						max-width: 1200px;
+				}
+				.cart-area {
+					height: 120px;
+				}
+ 				h2{
+ 						padding-top:50px;
+            color: #333;
+            font-size: 16px;
+            font-weight: 800;
+            text-align: right;
+            margin-bottom: 20px;
+        }
+        .buy_tbl{
+            table-layout: fixed;
+            width: 100%;
+            border-collapse: collapse;
+					
+        }
+        .buy_tbl td input {
+        		text-align: center;
+        		border:none;
+        		width: 100%;
+        }
+        .buy_tbl caption{
+            padding: 0 0 17px;
+            color: #333;
+            font-size: 15px;
+            font-weight: 800;
+            text-align: left;
+        }
+        .buy_tbl th{
+        
+            padding: 15px 0;
+            background: #f7f7f7;
+            color: #333;
+            font-size: 14px;
+            font-weight: 400;
+            text-align: center;
+            border-top:1px solid #e6e6e6 ;
+            border-bottom:1px solid #e6e6e6 ;
+        }
+        .buy_tbl td{
+            border-bottom: 1px solid #e6e6e6;
+            color: #333;
+            font-size: 14px;
+            text-align: center;
+            vertical-align: middle;
+        }
+        
+        .delivery_tbl{
+            table-layout: fixed;
+            width: 100%;
+            border-collapse: collapse;
+        }
+        .delivery_tbl caption{
+            padding: 20px 0 17px 0;
+            color: #333;
+            font-size: 15px;
+            font-weight: 800;
+            text-align: left;
+        }
+        .delivery_tbl th{
+            font-size: 14px;
+            font-weight: 400;
+            background: #f7f7f7;
+            width: 170px;
+            padding: 40px 0 40px 0;
+            border-bottom: 1px solid #e6e6e6;
+            border-top: 1px solid #e6e6e6;
+        }
+        .delivery_tbl td{
+        		width:100%;
+            padding-left: 10px;
+            color: #333;
+            font-size: 14px;
+            vertical-align: middle;
+            border-bottom: 1px solid #e6e6e6;
+            border-top: 1px solid #e6e6e6;
+        }
+        .delivery_tbl input{
+        		padding: 10px 0 10px 3px;
+        		width: 300px;
+        }
+        #addressBtn{
+       	 		height: 50px;
+        }
+        .addressApi div{
+       	 		margin-bottom: 5px;
+       }
+       
+        .pay_tbl{
+            table-layout: fixed;
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 30px;
+        }
+        .pay_tbl th{
+            font-size: 14px;
+            font-weight: 400;
+            background: #f7f7f7;
+            width: 170px;
+            padding: 20px 0 20px 0;
+            border-bottom: 1px solid #e6e6e6;
+            border-top: 1px solid #e6e6e6;
+        }
+        .pay_tbl td{
+            padding:12px 0 12px 10px;
+            color: #333;
+            font-size: 14px;
+            vertical-align: middle;
+            border-bottom: 1px solid #e6e6e6;
+            border-top: 1px solid #e6e6e6;
+        }
+        .pay_tbl caption{
+            padding: 20px 0 17px;
+            font-size: 15px;
+            font-weight: 800;
+            text-align: left;
+        }
+        .shopping_btn{
+            padding-top: 30px;
+            text-align: right;
+        }
+        #shopping_cancle_btn{
+            background-color:rgba(155, 145, 145, 0.253);
+            border: 1px solid #dfdfdf;
+            font-size:14px;
+            padding:13.4px 61px 13.4px 61px;
+        }
+        #shopping_buy_btn{
+          	width: 150px;
+            height: 50px;
+           
+            font-size:14px;
+            background-color:rgb(188, 224, 116);
+            border: 1px solid #dfdfdf;
+            color: white;
+        }
+        textarea{
+        		width: 600px;
+    				height: 100px;
+        }
+        #fdm{
+        		margin: 20px 0 20px 0;
+        }
+        #addressBtn{
+        		border: 1px solid #dfdfdf;
+    				background: rgb(188, 224, 116);
+    				color: white;
+    				margin-top: 20px;
+        }
+        #sample6_detailAddress{
+        		margin-bottom: 20px;
+        }
+        .total_tr input{
+        		border: none;
+        }
+        .errmsg {
+						color: red;
+						font-size: 12px;
+						font-weight: bold;
+						font-family: 'Noto Sans KR', sans-serif;
+					}

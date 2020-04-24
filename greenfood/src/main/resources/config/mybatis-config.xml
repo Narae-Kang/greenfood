@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+	<typeAliases>
+		<typeAlias type="com.kh.greenfood.member.vo.MemberVO" alias="MemberVO"/>
+		
+		<typeAlias type="com.kh.greenfood.product.vo.ProductVO" alias="ProductVO"/>	
+		<typeAlias type="com.kh.greenfood.product.vo.CartVO" alias="CartVO"/>
+		
+		<typeAlias type="com.kh.greenfood.product.vo.OrdersInfoVO" alias="OrdersInfoVO"/>
+		<typeAlias type="com.kh.greenfood.product.vo.OrdersDetailVO" alias="OrdersDetailVO"/>
+		<typeAlias type="com.kh.greenfood.product.vo.OrdersVO" alias="OrdersVO"/>
+		
+		<typeAlias type="com.kh.greenfood.board.vo.BoardVO" alias="BoardVO" />
+		<typeAlias type="com.kh.greenfood.board.vo.BoardFileVO" alias="BoardFileVO"/>
+		<typeAlias type="com.kh.greenfood.board.vo.BoardCategoryVO" alias="BoardCategoryVO"/>
+		<typeAlias type="com.kh.greenfood.rboard.vo.RboardVO" alias="RboardVO"/>	
+			
+		<typeAlias type="com.kh.greenfood.menu.vo.MenuVO" alias="MenuVO"/>
+		<typeAlias type="com.kh.greenfood.menu.vo.SelectMenuVO" alias="SelectMenuVO"/>
+		
+	</typeAliases>
+			
+			
+			
+</configuration>

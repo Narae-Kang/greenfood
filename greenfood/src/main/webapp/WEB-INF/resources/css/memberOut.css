@@ -1,0 +1,63 @@
+@charset "UTF-8";
+ 			.outH2{
+ 						margin-top:50px;
+	   				padding: 90px 0 20px 0;
+	       		text-align: center;
+	       		font-size:30px;
+	       		font-family: 'Noto Sans KR', sans-serif;
+	    }
+		  #memberOUT{
+						display: flex;
+						justify-content: center;
+						min-height: 41vh; 
+						font-family: 'Noto Sans KR', sans-serif;
+			}
+	 	  .col{
+	           width: 100px;
+	           padding: 10px 10px 10px 10px;
+	     }
+       table{
+           border-collapse: collapse;
+           font-size: 14px;
+       }
+       td{
+           padding: 0px 0 10px 0;
+       }
+       .row input[type="text"], .row input[type="password"]{
+            width: 250px;
+            margin-left: 20px;
+            margin-bottom: 10px;
+       }
+       input,select{
+           padding: 10px 0 10px 10px;
+           font-size: 12px;
+       }
+       #memberOutBtn{
+ 		  		 width: 100%;
+           height: 60px;
+           border: 1px solid rgba(0, 0, 0, 0.212);
+           background-color:rgb(188, 224, 116);
+           font-size: 17px;
+           font-weight: bold;
+           color: white;  
+           margin: 10px 0 30px 0;     
+           }
+       #outCancelBtn{
+	       		background-color: rgb(241, 241, 241);
+	       		padding: 17px 172px 17px 172px;
+            border: 1px solid rgba(0, 0, 0, 0.212);
+            font-size: 17px;
+            font-weight: bold;
+            color: #444040;
+       }
+       .id, .pw{
+       			font-size: 14px;
+       }
+    
+       .errmsg {
+	       		padding-left:20px;
+	       		padding-bottom:8px;
+						color: red;
+						font-size: 12px;
+						font-weight: bold;
+				}

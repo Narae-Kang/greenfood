@@ -1,0 +1,62 @@
+@charset "UTF-8";
+		#frm{
+				display: flex;
+				justify-content: center;
+				min-height: 39vh; 
+				font-family: 'Noto Sans KR', sans-serif;
+		}
+      .col{ 
+           width: 100px;
+       
+           padding: 20px 10px 20px 10px;
+       }
+       table{
+           border-collapse: collapse;
+           font-size: 14px;
+       }
+       .row input[type="text"], .row input[type="date"]{
+            width: 260px;
+            margin-left: 10px;
+       }
+       
+       input,select{
+           padding: 10px 0 10px 10px;
+           font-size: 12px;
+       }
+       .findID input[type="text"]{
+            width: 100%;
+            height: 50px;
+            margin: 10px 0 10px 0;
+       }
+       #findIDBtn2{
+           width: 100%;
+           height: 60px;
+           border: 1px solid rgba(0, 0, 0, 0.212);
+           background-color:rgb(188, 224, 116);
+           font-size: 17px;
+    			 font-weight: 700;
+           color: white;
+       }
+       .findIDA{
+           text-align: center;
+           padding: 10px 0 20px 0;
+       }
+       .findIDA a{
+           text-decoration: none;
+           color: black;
+           font-size: 14px;
+           padding: 0 3px 0 3px ;
+       }
+       h2{
+       		padding: 140px 0 20px 0;
+       		display: flex;
+					justify-content: center;
+					font-size: 30px;
+       }
+       .errmsg {
+       		padding-left:10px;
+					color: red;
+					font-size: 12px;
+					font-weight: bold;
+					font-family: 'Noto Sans KR', sans-serif;
+				}
