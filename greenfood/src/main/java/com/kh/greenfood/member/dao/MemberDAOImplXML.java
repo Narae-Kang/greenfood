@@ -51,6 +51,7 @@ public class MemberDAOImplXML implements MemberDAO {
 	@Override
 	public MemberVO selectGreen(String id) {
 		logger.info("MemberDAOImplXML.selectGreen(String id) 호출됨!");
+<<<<<<< HEAD
 		return sqlSession.selectOne("mappers.MemberDAO-mapper.selectGreen", id);
 	}
 	//회원 탈퇴
@@ -110,5 +111,57 @@ public class MemberDAOImplXML implements MemberDAO {
 		sqlSession.update("newPassword", memberVO);
 	}
 	
+=======
+		return sqlSession.selectOne("mappers.MemberDAO-mapper.selectGreen");
+	}
+	//회원 탈퇴
+	@Override
+	public int outGreen(String id, String pw) {
+		logger.info("MemberDAOImplXML.outGreen(String id, String pw) 호출됨!");
+		Map<String,String> map = new HashMap<String, String>();
+		map.put("id", id);
+		map.put("pw", pw);
+		return sqlSession.delete("mappers.MemberDAO-mapper.outGreen", map);
+	}
+	//로그인
+	@Override
+	public MemberVO loginGreen(String id, String pw) {
+		logger.info("MemberDAOImplXML.loginGreen(String id, String pw) 호출됨!");
+		MemberVO memberVO = new MemberVO();
+		memberVO.setId(id);
+		memberVO.setPw(pw);
+		return sqlSession.selectOne("mappers.MemberDAO-mapper.loginGreen", memberVO);
+	}
+	//아이디 찾기
+	@Override
+	public String findID(String tel, Date birth) {
+		logger.info("MemberDAOImplXML.findID(String tel, Date birth) 호출됨!");
+		MemberVO memberVO = new MemberVO();
+		memberVO.setTel(tel);
+		memberVO.setBirth(birth);		
+		return sqlSession.selectOne("mappers.MemberDAO-mapper.findID", memberVO);
+	}
+	//비밀번호 대상 찾기
+	@Override
+	public int findPW(MemberVO memberVO) {
+		logger.info("MemberDAOImplXML.findPW(MemberVO memberVO) 호출됨!");
+		return sqlSession.selectOne("mappers.MemberDAO-mapper.findPW", memberVO);
+	}
+	//비밀번호 변경
+	@Override
+	public int changePW(String id, String pw) {
+		logger.info("MemberDAOImplXML.changePW(String tel, String pw) 호출됨!");
+		MemberVO memberVO = new MemberVO();
+		memberVO.setId(id);
+		memberVO.setPw(pw);	
+		return sqlSession.update("mappers.MemberDAO-mapper.changePW", memberVO);
+	}
+
+	@Override
+	public int ViewMyShopInfo(String id) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+>>>>>>> refs/remotes/origin/master
 
 }

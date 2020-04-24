@@ -15,4 +15,7 @@ public class BoardFileVO {
 	private Timestamp cdate;			//생성일
 	private Timestamp udate;			//수정일
 }
+<<<<<<< HEAD
 	
+=======
+>>>>>>> refs/remotes/origin/master

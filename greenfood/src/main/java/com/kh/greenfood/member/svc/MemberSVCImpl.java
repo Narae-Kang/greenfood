@@ -50,6 +50,7 @@ public class MemberSVCImpl implements MemberSVC {
 	//회원 개별조회
 	@Override
 	public MemberVO selectGreen(String id) {
+<<<<<<< HEAD
 		logger.info("MemberSVCImpl.selectGreen(String id) 호출됨");
 		return memberDAO.selectGreen(id);
 	}
@@ -94,5 +95,46 @@ public class MemberSVCImpl implements MemberSVC {
 		memberDAO.newPassword(memebrVO);
 	}
 	
+=======
+		logger.info("MemberSVCImpl.selectMember(String id) 호출됨");
+		return memberDAO.selectGreen(id);
+	}
+	//회원탈퇴
+	@Override
+	public int outGreen(String id, String pw) {
+		logger.info("MemberSVCImpl.outGreen(String id, String pw) 호출됨");
+		return memberDAO.outGreen(id, pw);
+	}
+
+	//로그인
+	@Override
+	public MemberVO loginGreen(String id, String pw) {
+		logger.info("MemberSVCImpl.loginMember(String id, String pw) 호출됨");
+		return memberDAO.loginGreen(id, pw);
+	}
+	//아이디찾기
+	@Override
+	public String findID(String tel, Date birth) {
+		logger.info("MemberSVCImpl.findID(String tel, Date birth) 호출됨!"+birth);
+		return memberDAO.findID(tel, birth);
+	}
+	//비밀번호 변경대상 찾기
+	@Override
+	public int findPW(MemberVO memberVO) {
+		logger.info("MemberSVCImpl.findPW(MemberVO memberVO) 호출됨");
+		return memberDAO.findPW(memberVO);
+	}
+	//비밀번호 변경
+	@Override
+	public int changePW(String id, String pw) {
+		logger.info("MemberSVCImpl.changePW(String id, String pw) 호출됨");
+		return memberDAO.changePW(id, pw);
+	}
+
+	@Override
+	public int ViewMyShopInfo(String id) {
+		return 0;
+	}
+>>>>>>> refs/remotes/origin/master
 
 }

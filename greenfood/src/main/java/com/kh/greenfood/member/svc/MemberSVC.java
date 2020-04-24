@@ -34,6 +34,7 @@ public interface MemberSVC {
 	//아이디찾기
 	String findID(String tel, Date birth);
 	
+<<<<<<< HEAD
 	/*
 	 * //비밀번호 대상 찾기+ 변경 int findPW(MemberVO memberVO);
 	 * 
@@ -46,4 +47,14 @@ public interface MemberSVC {
 	public void newPassword(MemberVO memberVO);
 
 	
+=======
+	//비밀번호 대상 찾기+ 변경
+	int findPW(MemberVO memberVO);
+	
+	//비번 변경
+	int changePW(String id, String pw);
+	
+	//나의 쇼핑정보
+	int ViewMyShopInfo(String id);
+>>>>>>> refs/remotes/origin/master
 }

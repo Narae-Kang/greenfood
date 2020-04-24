@@ -2,6 +2,10 @@ package com.kh.greenfood.diet.vo;
 
 import java.sql.Timestamp;
 
+<<<<<<< HEAD
+=======
+import com.kh.greenfood.board.vo.Board_ReviewVO;
+>>>>>>> refs/remotes/origin/master
 
 import lombok.Data;
 @Data

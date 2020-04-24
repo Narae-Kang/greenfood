@@ -10,6 +10,7 @@
 	<!-- DispatcherServlet Context: defines this servlet's request-processing infrastructure -->
 	
 	<!-- Enables the Spring MVC @Controller programming model -->
+<<<<<<< HEAD
 	<!-- @Controller가 붙은 클래스를 서버 구동시 스프링 컨테이너가 자동으로 빈으로 등록 하록 설정-->
 	<annotation-driven />
 
@@ -46,6 +47,25 @@
       <beans:property name="maxUploadSize" value="10485760" />
       <beans:property name="defaultEncoding" value="utf-8" />
    </beans:bean>
+=======
+	<!-- @Controller가 붙은 클래스를 서버구동시 스프링컨테이너가 자동으로 빈 등록하도록 설정 -->
+	<annotation-driven />
+
+	<!-- Handles HTTP GET requests for /resources/** by efficiently serving up static resources in the ${webappRoot}/resources directory -->
+	<!-- 정적페이지 매핑경로설정 -->
+	<resources mapping="/resources/**" location="/resources/" />
+
+<!-- 웹 컴포넌트 라이브러리 url매핑  -->
+	<resources mapping="/webjars/**" location="classpath:/META-INF/resources/webjars/" />
+	
+	<!-- Resolves views selected for rendering by @Controllers to .jsp resources in the /WEB-INF/views directory -->
+	<!-- 뷰를 찾기위한 세팅 정보 -->
+	<beans:bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<beans:property name="prefix" value="/WEB-INF/views/" />
+		<beans:property name="suffix" value=".jsp" />
+	</beans:bean>
+	
+>>>>>>> refs/remotes/origin/master
 
 			<!-- 1)특정 URL지정 -->
 	

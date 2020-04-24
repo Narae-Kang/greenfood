@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>관리자 - 상품등록</title>
+  <link rel="stylesheet" type="text/css" href="css/main.css">
+  <script src="js/main.js"></script>
+  <style>
+    #adminContainer {
+      width: 100%; 
+      display: flex;
+      justify-content: center;
+      min-height: 64vh;
+    }
+    #adminWrapper {
+      width: 1024px;
+    }
+    #adminMenuBox ul li {
+      width: 100px; height: 40px;
+      display: inline-block;
+      border: 1px solid #d3d3d3;
+      text-align: center;
+      margin: 15px 5px 25px 0;
+    }
+    #adminMenuBox ul li a {
+    width: 100px; height:40px;
+    padding: 0 10px;
+    color: #d3d3d3;
+    font-size: 15px;
+    font-weight: 400;
+    line-height: 40px;
+    }
+    
+  </style>
+  <script>
+    window.addEventListener("load", init, false);
+
+    function init() {
+      changeColor(true);
+    }
+
+
+    //현재 페이지 박스 색상 변경
+    function changeColor(flag) {
+      if(flag) {
+        var orderBox = document.getElementById("productBox");
+        var orderBtn = document.getElementById("productBtn");
+        orderBox.style.border="1px solid black";
+        orderBtn.style.color="black";
+      }
+    }
+
+  </script>
+  
+</head>
+<body>
+  <header id="header">
+    <div id="headerContainerAll">
+      <div id="headerContainer">
+
+        <div class="headerItem headerLogo"><a href=""><img src="img/tbanner3.jpg" alt="banner"></a></div>
+
+        <div class="headerItem headerNav">
+          <ul>
+            <li><a href="">맛있는 한끼</a>
+              <ul class="sub1">
+                <li class="sub1-1"><a href="">그린 정식</a></li>
+                <li class="sub1-2"><a href="">그린 덮밥</a></li>
+                <li class="sub1-3"><a href="">그린 스페셜</a></li>
+                <li class="sub1-4"><a href="">그린 다이어트</a></li>
+              </ul>
+            </li>
+            <li><a href="">고객 센터</a>
+              <ul class="sub2">
+                <li class="sub2-1"><a href="">후기</a></li>
+                <li class="sub2-2"><a href="">Q & A</a></li>
+                <li class="sub2-3"><a href="">공지사항</a></li>
+              </ul>
+            </li>
+          </ul>
+        </div> <!--headerNav-->
+        <div class="headerItem rightMenu">
+          <div class="iconMenu">
+            <div class="cart"><a href=""><i class="fas fa-shopping-cart fa-2x"></i></a></div>
+            <div class="mypage"><a href=""><i class="fas fa-user-edit fa-2x"></i></a></div>
+          </div>
+          <div class="memberMenu">
+            <div class="join"><a href="">JOIN</a></div>
+            <div class="login"><a href="">LOGIN</a></div>
+          </div>
+        </div>
+
+      </div> <!--headerWrapper 끝-->
+    </div> <!--headerContainer 끝-->
+  </header>
+  
+  <div id="adminContainer">
+    <div id="adminWrapper">
+      <div id="adminMenuBox">
+        <ul>
+          <li id="orderBox"><a href="adminOrder.html" id="orderBtn">주문 관리</a></li>
+          <li id="productBox"><a href="adminProduct.html" id="productBtn">상품 등록</a></li>
+          <li id="menuBox"><a href="#" id="menuBtn">식단 등록</a></li>
+        </ul>
+      </div>
+
+      <div id="adminProductList">
+
+      </div>
+
+    </div> <!--adminWrapper끝-->
+  </div>  <!--adminContainer 끝-->
+
+
+
+  <footer id="footer">
+    <div id="footerContainerAll"> 
+      <div id="footerContainer">
+        <!--푸터 메뉴-->
+        <div class="footerContent">
+          <div class="linkMenu">
+            <ul>
+              <li><a href="">이용약관</a></li>
+              <li><a href="">개인정보취급방침</a></li>
+              <li><a href="">제휴문의</a></li>
+              <li><a href="">고객센터</a></li>
+              <li><a href="">Q&A문의</a></li>
+            </ul> 
+          </div>
+          <div class="teamInfo">
+            <ul>
+              <li>주식회사: GREEN FOOD</li>
+              <li>대표이사: 강나래</li>
+              <li>주소: 서울특별시 강남구 학동로 123</li>
+            </ul>
+          </div>   
+        </div>  <!-- footerContent끝 -->
+        <div class="footerLogo"><a href=""><img src="img/tbanner4.jpg" alt="banner"></a></div>
+      </div>  
+    </div>
+  </footer>
+
+</body>
+</html>

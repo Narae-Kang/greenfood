@@ -12,6 +12,7 @@
     
  		<!-- file로 log 남기기 -->   
     <appender name="file" class="ch.qos.logback.core.FileAppender">
+<<<<<<< HEAD
         <file>c:\logs\springFile.log</file>
         <append>true</append>
         <encoder>
@@ -27,6 +28,23 @@
         <file>c:\logs\springRollingFile.log</file>
         <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
            <fileNamePattern>c:\logs\springRollingFile.%d{yyyy-MM-dd-HH}.log</fileNamePattern>
+=======
+        <file>d:\logs\springFile.log</file>
+        <append>true</append>
+        <encoder>
+            <pattern>
+                ▶ %-5level %d{HH:mm:ss.SSS} [%thread] %logger[%method:%line] - %msg%n
+<!--                 [%method:%line] : 어떤 메소드에 어떤 라인에서 찍혔는지 %msg%n : 찍고 싶은 로그 -->
+            </pattern>
+        </encoder>
+    </appender>
+    
+		<!-- 파일롤링:날짜별/시간별 로깅파일 분리 -->    
+    <appender name="dailyRolling" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>d:\logs\springRollingFile.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+           <fileNamePattern>d:\logs\springRollingFile.%d{yyyy-MM-dd-HH}.log</fileNamePattern>
+>>>>>>> refs/remotes/origin/master
            <maxHistory>30</maxHistory>
         </rollingPolicy>
         <encoder>

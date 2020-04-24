@@ -5,6 +5,7 @@
 <configuration>
 	<typeAliases>
 		<typeAlias type="com.kh.greenfood.member.vo.MemberVO" alias="MemberVO"/>
+<<<<<<< HEAD
 		
 		<typeAlias type="com.kh.greenfood.product.vo.ProductVO" alias="ProductVO"/>	
 		<typeAlias type="com.kh.greenfood.product.vo.CartVO" alias="CartVO"/>
@@ -25,4 +26,7 @@
 			
 			
 			
+=======
+			</typeAliases>
+>>>>>>> refs/remotes/origin/master
 </configuration>

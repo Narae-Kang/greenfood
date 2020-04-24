@@ -25,6 +25,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.kh.greenfood.member.svc.MemberSVC;
 import com.kh.greenfood.member.vo.MemberVO;
+<<<<<<< HEAD
 import com.kh.greenfood.product.svc.CartSVC;
 
 @Controller
@@ -194,4 +195,202 @@ public class MemberController {
 			return res;
 	}
 
+=======
+
+@Controller
+@RequestMapping("/member")
+public class MemberController {
+
+	// ============참고하세요==============
+	// ===컨트롤러 양식 : green+jsp이름=====
+	// ===Mapping주소는 개인 포폴과 동일함===
+	// ===ModelAttribute VO 객체: mvo=====
+	// ===처리양식은 메서드명(ex:modify)====
+
+	private static final Logger logger 
+	= LoggerFactory.getLogger(MemberController.class);
+	
+	@Inject
+	MemberSVC memberSVC;
+		
+	//회원가입양식
+	@RequestMapping("/joinForm")
+	public String greenJoinForm(Model model) {
+		model.addAttribute("mvo", new MemberVO());
+		return "member/joinForm";
+	}
+	
+	//회원등록
+	@RequestMapping("/join")
+	public String greenMemberJoin(
+			@Valid @ModelAttribute("mvo") MemberVO memberVO,
+			BindingResult result,
+			Model model) {
+		logger.info(memberVO.toString());
+		
+		//1) 유효성 오류체크중 오류 발견 시 회원가입 페이지 유지
+		if(result.hasErrors()) {
+			return "member/joinForm";
+		}
+		//2) 회원 중복체크 (중복 API 사용시 해당 설명문 삭제하면 됨)
+		if(memberSVC.selectGreen(memberVO.getId()) != null) {
+			model.addAttribute("svr_msg", "중복된 아이디입니다");
+			return "member/joinForm";
+		}
+		
+		//3) 회원 가입처리
+		int cnt = memberSVC.joinGreen(memberVO);
+		if(cnt == 1) {
+			return "member/loginForm";	//충족시 가입완료 후 로그인 페이지
+		}else {
+			return "redirect:/";        //미충족시 가입 페이지 유지
+		}
+	}
+	//회원수정 양식
+	@GetMapping("modifyForm/{id:.+")
+	public String greenModifyForm(@PathVariable String id, Model model) {
+		
+		//1) 현재 로그인 상태의 회원정보 읽어오기
+		MemberVO memberVO = memberSVC.selectGreen(id);
+	  logger.info("memberVO:" + memberVO);
+		//비밀번호 제거
+		memberVO.setPw(null);
+		model.addAttribute("mvo", memberVO);		
+		return "member/modifyForm";
+	}
+	//회원수정
+	@PostMapping("/modify")
+	public String greenModify(
+			@Valid @ModelAttribute("mvo") MemberVO memberVO,
+			BindingResult result,
+			HttpSession session,
+			Model model) {
+		//유효성체크
+		if(result.hasErrors()) {
+			//비밀번호 제거
+			memberVO.setPw(null);
+			return "member/modifyForm";
+		}
+		logger.info("memberVO : " + memberVO.toString());
+		//다음지도API로 입력된 주소 단위별로 호출하는 구간
+		String aaa = memberVO.getAddress1();
+	  aaa += "," + memberVO.getAddress2();
+	  aaa += "," + memberVO.getAddress3();
+	  memberVO.setAddress(aaa);
+	  
+	  int cnt = memberSVC.modifyGreen(memberVO);
+	  logger.info("수정처리결과:"+cnt);
+	  
+	  //세션정보 수정
+	  session.removeAttribute("member");
+	  memberVO = memberSVC.selectGreen(memberVO.getId());
+	  session.setAttribute("member", memberVO);
+	  return "redirect:/";
+	}
+	//회원 탈퇴양식
+	@GetMapping("/outForm")
+	public String greenOutForm() {
+		return "member/outForm";
+	}
+	//회원탈퇴처리
+	@PostMapping("/out")
+	public String greenOut(
+			@RequestParam("id") String id,
+			@RequestParam("pw") String pw,
+			HttpSession session,
+			Model model) {
+		
+		int cnt = memberSVC.outGreen(id, pw);
+		if(cnt == 1 ) {
+			session.invalidate();
+			return "redirect:/";
+		}
+		
+		model.addAttribute("svr_msg", "비밀번호가 일칮하지 않습니다!");
+		return "member/outForm";
+	}
+	
+	//아이디찾기 양식
+	@GetMapping("findIDForm")
+	public String greenFindIDForm() {
+		
+		return "member/findIDForm";
+	}
+	
+	//아이디 찾기 post방식
+	@PostMapping(value="/id", produces = "application/json")
+	@ResponseBody
+	public ResponseEntity<Map> greenFindID(
+			@RequestBody MemberVO memberVO
+			){
+			ResponseEntity<Map> res = null;
+			String findID = null;
+			logger.info("tel:"+memberVO.getTel());
+			logger.info("birth:"+memberVO.getBirth());
+			
+		//java.sql.Date타입으로 변환
+			memberVO.setBirth(java.sql.Date.valueOf(memberVO.getBirth().toString()));
+			//아이디 찾기 service 호출
+			findID = memberSVC.findID(memberVO.getTel(),memberVO.getBirth());
+			Map<String,Object> map = new HashMap();
+			if(findID != null) {
+				map.put("success", true);
+				map.put("id", findID);
+				res = new ResponseEntity<Map>(map, HttpStatus.OK);  // 200
+			}else {
+				map.put("success",false);
+				map.put("id",findID);
+				map.put("msg","가입된 회원정보가 없습니다!");
+				res = new ResponseEntity<Map>(map, HttpStatus.OK); //200
+			}
+			return res;
+	}
+	//비밀번호 변경 화면
+	@GetMapping("/findPWForm")
+	public String greenFindFWForm() {
+		
+		return "member/findPWForm";
+	}
+	
+	//비밀번호 변경 대상 찾기
+	@PostMapping(value="/findPW", produces = "application/json;charset=utf-8")
+	@ResponseBody
+	public ResponseEntity<Map> greenFindPW(
+			@RequestBody MemberVO memberVO){
+		ResponseEntity<Map> res = null;
+		logger.info("비밀번호 변경 대상 찾기 요청:"+memberVO);
+		
+		//2)비밀번호 변경 대상 찾기
+		memberVO.setBirth(java.sql.Date.valueOf(memberVO.getBirth().toString()));
+		int cnt = memberSVC.findPW(memberVO);
+		Map<String,Boolean> map = new HashMap<String, Boolean>();
+		if(cnt == 1) {
+			map.put("success",true);
+			res = new ResponseEntity<Map>(map, HttpStatus.OK);
+		}else {
+			map.put("success",false);
+			res = new ResponseEntity<Map>(map, HttpStatus.OK);
+		}
+		return res;
+	}
+	
+	//비밀번호 변경
+	@PostMapping(value="/changePW", produces = "application/json;charset=utf-8")
+	@ResponseBody
+	public ResponseEntity<Map> greenChangePW(
+			@RequestBody MemberVO memberVO){
+			ResponseEntity<Map> res = null;
+			
+			int cnt = memberSVC.changePW(memberVO.getId(), memberVO.getPw());
+			Map<String,Boolean> map = new HashMap<String, Boolean>();
+			if(cnt == 1) {
+				map.put("success", true);
+				res = new ResponseEntity<Map>(map, HttpStatus.OK);
+			}else {
+				map.put("success", false);
+				res = new ResponseEntity<Map>(map, HttpStatus.OK);
+			}
+			return res;
+	}
+>>>>>>> refs/remotes/origin/master
 }

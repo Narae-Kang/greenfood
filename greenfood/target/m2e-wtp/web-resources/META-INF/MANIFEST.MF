@@ -1,5 +1,10 @@
 Manifest-Version: 1.0
+<<<<<<< HEAD
 Built-By: knara
 Build-Jdk: 1.8.0_241
+=======
+Built-By: Administrator
+Build-Jdk: 1.8.0_201
+>>>>>>> refs/remotes/origin/master
 Created-By: Maven Integration for Eclipse
 
